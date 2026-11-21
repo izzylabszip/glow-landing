@@ -77,7 +77,7 @@ export default function BlogPostPage({ params }: PageProps) {
             <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: 22 }}>
               Book a verified artist near you, or take a free skin scan first.
             </p>
-            <a href={APP_URL} className="btn btn-paper btn-lg" style={{ textDecoration: 'none' }}>Open Glow</a>
+            <a href={APP_URL} className="btn btn-paper btn-lg" style={{ textDecoration: 'none' }}>Open Gloww</a>
           </div>
         </article>
       </main>

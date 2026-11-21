@@ -29,7 +29,7 @@ export default function SkinScan() {
           <p className="kicker">My Space · Free</p>
           <h2 className="display-2">A skin scan that <em>shows its work.</em></h2>
           <p className="lead">
-            One selfie in good light. Glow maps your face zone by zone, draws a soft heatmap of where it sees redness,
+            One selfie in good light. Gloww maps your face zone by zone, draws a soft heatmap of where it sees redness,
             texture or shine, and circles only the spots it is sure of. Scan again next week and watch what changes.
           </p>
           <ul className="pills">{READS.map(r => <li key={r}>{r}</li>)}</ul>

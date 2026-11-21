@@ -3,7 +3,7 @@ title: "Skin type test: find yours at home or from a photo"
 description: "Three simple ways to find your skin type: the bare-face test, the blotting-paper test and a free photo scan, and what each can and cannot tell you."
 date: "2026-10-27"
 category: "Skin care"
-author: "Glow Team"
+author: "Gloww Team"
 tags: ["skin type test", "skin type test online", "skin analysis", "oily skin", "dry skin"]
 image: "https://images.pexels.com/photos/6811012/pexels-photo-6811012.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ---
@@ -35,7 +35,7 @@ After the bare-face test, press a clean blotting paper on your forehead, nose, c
 
 ## Test 3: a photo scan
 
-A guided selfie can measure what a camera actually sees: shine, redness, uneven tone, visible pores, texture and dark circles, zone by zone. Glow's [free AI skin analysis](/ai-skin-analysis) does this in the app and keeps each scan, so you can see whether a new routine is working.
+A guided selfie can measure what a camera actually sees: shine, redness, uneven tone, visible pores, texture and dark circles, zone by zone. Gloww's [free AI skin analysis](/ai-skin-analysis) does this in the app and keeps each scan, so you can see whether a new routine is working.
 
 What a photo cannot measure is how your skin feels. Tightness, stinging and how much water is in your skin are not visible in pixels, so an honest scan reports them with low confidence or not at all. Use the bare-face test for those.
 

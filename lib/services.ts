@@ -23,12 +23,12 @@ export const SERVICES: ServicePage[] = [
     name: 'Bridal makeup',
     title: 'Book a Bridal Makeup Artist Near You',
     description:
-      'Find and book a bridal makeup artist near you: see real bridal work, compare artists, plan your trial and timeline, at home or in their studio. Book on Glow.',
+      'Find and book a bridal makeup artist near you: see real bridal work, compare artists, plan your trial and timeline, at home or in their studio. Book on Gloww.',
     kicker: 'Bridal makeup',
     headline: 'Your wedding look,',
     headlineEm: 'planned properly.',
     intro:
-      'A bridal look has to last 12 hours, photograph well in daylight and under flash, and still feel like you. Glow helps you find an artist whose real bridal work matches what you want, book your date early, and plan the trial and the timing.',
+      'A bridal look has to last 12 hours, photograph well in daylight and under flash, and still feel like you. Gloww helps you find an artist whose real bridal work matches what you want, book your date early, and plan the trial and the timing.',
     photo: '35341784',
     photoAlt: 'Bride with soft glam bridal makeup',
     sections: [
@@ -36,7 +36,7 @@ export const SERVICES: ServicePage[] = [
         heading: 'How to choose a bridal makeup artist',
         body: [
           'Look at brides with a skin tone and style close to yours, not just the artist’s best photo. Ask how long the look lasts and what they use for a long day, and whether they bring a touch-up kit.',
-          'Check what is included: hair, draping, lashes, jewellery setting, and whether they come to your home or venue. On Glow, each artist profile lists services, prices and whether they travel.',
+          'Check what is included: hair, draping, lashes, jewellery setting, and whether they come to your home or venue. On Gloww, each artist profile lists services, prices and whether they travel.',
         ],
       },
       {
@@ -51,15 +51,15 @@ export const SERVICES: ServicePage[] = [
         heading: 'Prepare your skin',
         body: [
           'Keep a simple, steady routine in the weeks before: gentle cleanser, moisturiser, sunscreen. Avoid new strong products or facials in the last two weeks.',
-          'Glow’s free AI skin scan shows redness, texture and dryness zone by zone, so you can see whether your routine is working as the date gets closer.',
+          'Gloww’s free AI skin scan shows redness, texture and dryness zone by zone, so you can see whether your routine is working as the date gets closer.',
         ],
       },
     ],
     checklist: ['Real bridal photos on similar skin tones', 'Trial look before the day', 'Hair and draping included or booked', 'Home or venue visit confirmed', 'Touch-up kit for the day'],
     faqs: [
-      { q: 'How early should I book a bridal makeup artist?', a: 'Two to three months ahead for most weddings, earlier for peak wedding season or a weekend date. You can reserve the date on Glow and plan the trial after.' },
+      { q: 'How early should I book a bridal makeup artist?', a: 'Two to three months ahead for most weddings, earlier for peak wedding season or a weekend date. You can reserve the date on Gloww and plan the trial after.' },
       { q: 'Do I need a bridal makeup trial?', a: 'It is strongly recommended. A trial in your wedding colours shows how the look photographs and lasts, and gives you time to change it.' },
-      { q: 'Can the artist come to my home or venue?', a: 'Many bridal artists on Glow offer home and venue visits. Each profile shows whether they travel.' },
+      { q: 'Can the artist come to my home or venue?', a: 'Many bridal artists on Gloww offer home and venue visits. Each profile shows whether they travel.' },
     ],
   },
   {
@@ -67,7 +67,7 @@ export const SERVICES: ServicePage[] = [
     name: 'Party makeup',
     title: 'Party & Event Makeup Artist Near You',
     description:
-      'Book a makeup artist near you for parties, receptions, festivals and photoshoots. Soft glam to full glam, at home or in the studio. Book on Glow.',
+      'Book a makeup artist near you for parties, receptions, festivals and photoshoots. Soft glam to full glam, at home or in the studio. Book on Gloww.',
     kicker: 'Party & event makeup',
     headline: 'Glam for the night,',
     headlineEm: 'booked in minutes.',
@@ -79,7 +79,7 @@ export const SERVICES: ServicePage[] = [
       {
         heading: 'Pick the look first',
         body: [
-          'Soft glam, smoky eyes, glass skin, bold lips: start from a Look in the app and Glow shows the artists who do it. It is easier to agree on a look from a photo than from a description.',
+          'Soft glam, smoky eyes, glass skin, bold lips: start from a Look in the app and Gloww shows the artists who do it. It is easier to agree on a look from a photo than from a description.',
         ],
       },
       {
@@ -101,7 +101,7 @@ export const SERVICES: ServicePage[] = [
     name: 'Hair styling',
     title: 'Book a Hair Stylist Near You for Events',
     description:
-      'Book a hair stylist near you for weddings, parties and photoshoots: updos, waves, braids and blow-dries, at home or in the salon. Book on Glow.',
+      'Book a hair stylist near you for weddings, parties and photoshoots: updos, waves, braids and blow-dries, at home or in the salon. Book on Gloww.',
     kicker: 'Hair styling',
     headline: 'Hair that holds',
     headlineEm: 'all night.',
@@ -121,7 +121,7 @@ export const SERVICES: ServicePage[] = [
     checklist: ['Reference photo of the style', 'Hair length and thickness shared', 'Accessories ready', 'Timing set around makeup'],
     faqs: [
       { q: 'Should I book hair and makeup with the same artist?', a: 'Many artists do both. If not, book them back to back and tell both the timing.' },
-      { q: 'Can the stylist come to my home?', a: 'Many stylists on Glow offer home visits. Each profile shows where they work.' },
+      { q: 'Can the stylist come to my home?', a: 'Many stylists on Gloww offer home visits. Each profile shows where they work.' },
     ],
   },
   {
@@ -129,7 +129,7 @@ export const SERVICES: ServicePage[] = [
     name: 'Mehendi',
     title: 'Book a Mehendi (Henna) Artist Near You',
     description:
-      'Book a mehendi artist near you for weddings, festivals and parties: bridal, Arabic and minimal henna designs. See real designs and book a time on Glow.',
+      'Book a mehendi artist near you for weddings, festivals and parties: bridal, Arabic and minimal henna designs. See real designs and book a time on Gloww.',
     kicker: 'Mehendi & henna',
     headline: 'Mehendi with',
     headlineEm: 'the colour you want.',
@@ -157,7 +157,7 @@ export const SERVICES: ServicePage[] = [
     name: 'Nails',
     title: 'Nail Artist Near You: Manicures & Nail Art',
     description:
-      'Book a nail artist near you for manicures, gel and nail art, at home or in the studio. See real work, compare prices and book on Glow.',
+      'Book a nail artist near you for manicures, gel and nail art, at home or in the studio. See real work, compare prices and book on Gloww.',
     kicker: 'Nails',
     headline: 'Nails that',
     headlineEm: 'match the moment.',

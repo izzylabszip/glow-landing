@@ -40,7 +40,7 @@ function parsePost(filename: string): BlogPost {
     slug,
     title: data.title || '',
     description: data.description || '',
-    author: data.author || 'Glow Team',
+    author: data.author || 'Gloww Team',
     date: isoDay(data.date),
     updated: data.updated ? isoDay(data.updated) : undefined,
     image: data.image,

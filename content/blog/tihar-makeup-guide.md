@@ -3,7 +3,7 @@ title: "Tihar makeup guide: a look that lasts all five days"
 description: "How to plan your Tihar makeup in Kathmandu: a long-wear base, marigold-friendly colours, a tika-ready forehead, and when to book your artist."
 date: "2026-10-24"
 category: "Festivals"
-author: "Glow Team"
+author: "Gloww Team"
 tags: ["Tihar", "festival makeup", "Kathmandu"]
 image: "https://images.pexels.com/photos/20265605/pexels-photo-20265605.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ---
@@ -18,7 +18,7 @@ October and November in Kathmandu bring cooler, drier air. A base sits better on
 - In the morning, use a light hydrating layer and let it sink in before primer
 - Keep primer and heavy base thin on the centre of the forehead, where the tika goes
 
-If you use the Glow skin scan, look at the dryness and redness areas before the festival. They show where your base is most likely to cling or flake.
+If you use the Gloww skin scan, look at the dryness and redness areas before the festival. They show where your base is most likely to cling or flake.
 
 ## A base that lasts the day
 
@@ -48,4 +48,4 @@ Festival mornings are the busiest slots of the year. Book a week or two ahead, a
 2. Your outfit colours, or send a photo
 3. Whether you want them to come to your home
 
-You can book makeup, hair and mehendi artists for Tihar on [Glow](https://app.gloww.dev), at home or in their salon.
+You can book makeup, hair and mehendi artists for Tihar on [Gloww](https://app.gloww.dev), at home or in their salon.

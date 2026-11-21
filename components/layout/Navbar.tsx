@@ -47,14 +47,14 @@ export default function Navbar() {
         <div className="wrap" style={{ display: 'flex', alignItems: 'center', gap: 36, height: 72 }}>
           <a
             href="/"
-            aria-label="Glow home"
+            aria-label="Gloww home"
             style={{
               display: 'flex', alignItems: 'center', gap: 10,
               fontFamily: 'var(--sans)', fontWeight: 300, fontSize: 22, letterSpacing: '-0.02em',
             }}
           >
             <GlowMark size={32} />
-            <span style={{ fontWeight: 300 }}>Glow</span>
+            <span style={{ fontWeight: 300 }}>Gloww</span>
           </a>
 
           <nav
@@ -82,7 +82,7 @@ export default function Navbar() {
               className="btn btn-rose btn-sm"
               style={{ borderRadius: 999 }}
             >
-              Open Glow
+              Open Gloww
               <svg className="arr" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
@@ -172,7 +172,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               style={{ height: 56, fontSize: 16, justifyContent: 'center', borderRadius: 14 }}
             >
-              Open Glow
+              Open Gloww
               <svg className="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>

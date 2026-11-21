@@ -7,8 +7,8 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = pageMeta({
-  title: 'The Glow Journal: makeup, hair and skin care guides',
-  description: 'Bridal makeup planning, festival looks and skin care guides from Glow.',
+  title: 'The Gloww Journal: makeup, hair and skin care guides',
+  description: 'Bridal makeup planning, festival looks and skin care guides from Gloww.',
   path: '/blog',
 })
 
@@ -21,7 +21,7 @@ export default function BlogPage() {
       <main className="prose-page">
         <div className="wrap-tight" style={{ maxWidth: 900 }}>
           <p className="kicker">Journal</p>
-          <h1>The Glow Journal</h1>
+          <h1>The Gloww Journal</h1>
           <p style={{ marginBottom: 36, color: 'var(--muted)' }}>
             Bridal planning, festival looks and skin care, written for real life.
           </p>

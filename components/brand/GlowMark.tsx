@@ -60,7 +60,7 @@ export function GlowWordmark({ size = 36, inverted = false }: { size?: number; i
           lineHeight: 1,
         }}
       >
-        Glow
+        Gloww
       </span>
     </span>
   )

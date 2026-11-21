@@ -5,15 +5,15 @@ import type { Metadata } from 'next'
 import { breadcrumb, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_TEL, pageMeta } from '@/lib/site'
 
 export const metadata: Metadata = pageMeta({
-  title: 'Glow support: bookings, payments and skin scans',
-  description: 'Help with Glow: booking an artist, cancelling, refunds, deleting your account, the skin scan and joining as an artist.',
+  title: 'Gloww support: bookings, payments and skin scans',
+  description: 'Help with Gloww: booking an artist, cancelling, refunds, deleting your account, the skin scan and joining as an artist.',
   path: '/support',
 })
 
 const faqs = [
   {
     q: 'How do I book an artist?',
-    a: 'Open the Glow app, pick a service (makeup, hair, nails, mehendi and more), choose Now or Schedule, then pick an artist from their work and reviews and confirm. You can chat with the artist and track their arrival on the day.',
+    a: 'Open the Gloww app, pick a service (makeup, hair, nails, mehendi and more), choose Now or Schedule, then pick an artist from their work and reviews and confirm. You can chat with the artist and track their arrival on the day.',
   },
   {
     q: 'How much does it cost?',
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: 'I am an artist — how do I join?',
-    a: 'Open Glow at app.gloww.dev, sign up as an artist, then add your services and prices, your work, and your documents. Our team reviews and approves new artists.',
+    a: 'Open Gloww at app.gloww.dev, sign up as an artist, then add your services and prices, your work, and your documents. Our team reviews and approves new artists.',
   },
   {
     q: 'Is the skin scan a medical diagnosis?',

@@ -2,8 +2,8 @@
 // two can never disagree (Google ignores FAQ markup that isn't on the page).
 export const FAQS: { q: string; a: string }[] = [
   {
-    q: 'What is Glow?',
-    a: 'Glow is a beauty app. Book makeup artists, hairstylists, nail, mehendi and threading artists near you, browse Looks for weddings, parties and everyday, and use My Space, a free AI skin scan that tracks your skin over time.',
+    q: 'What is Gloww?',
+    a: 'Gloww is a beauty app. Book makeup artists, hairstylists, nail, mehendi and threading artists near you, browse Looks for weddings, parties and everyday, and use My Space, a free AI skin scan that tracks your skin over time.',
   },
   {
     q: 'Can an artist come to my home?',
@@ -23,6 +23,6 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: 'Do I need to download an app?',
-    a: 'No. Glow works in your browser at app.gloww.dev. iPhone and Android apps are coming soon.',
+    a: 'No. Gloww works in your browser at app.gloww.dev. iPhone and Android apps are coming soon.',
   },
 ]

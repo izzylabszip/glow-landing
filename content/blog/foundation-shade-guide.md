@@ -3,7 +3,7 @@ title: "Skin tone foundation: how to match your shade"
 description: "Match foundation to your skin tone: find your undertone, test three shades on your jawline in daylight, and allow for oxidation — a simple guide for South Asian skin."
 date: "2026-10-27"
 category: "Makeup"
-author: "Glow Team"
+author: "Gloww Team"
 tags: ["foundation shade", "choose foundation", "undertone", "South Asian skin", "makeup tips"]
 image: "https://images.pexels.com/photos/14575974/pexels-photo-14575974.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ---
@@ -58,7 +58,7 @@ The right shade disappears into both your face and your neck. If your face is li
 - Dry skin: hydrating or satin finishes; prep with moisturiser first
 - Combination: a satin finish, with powder only where you shine
 
-Not sure of your type? The [skin type test](/blog/skin-type-test) takes an hour, and Glow's [free skin scan](/ai-skin-analysis) shows shine and dry areas zone by zone.
+Not sure of your type? The [skin type test](/blog/skin-type-test) takes an hour, and Gloww's [free skin scan](/ai-skin-analysis) shows shine and dry areas zone by zone.
 
 ## Weddings and events
 

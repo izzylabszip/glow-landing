@@ -3,7 +3,7 @@ title: "Winter skin care: dry air, cold mornings, makeup"
 description: "Why skin gets dry and red in winter, a simple routine that helps, and how to keep makeup from looking patchy."
 date: "2026-10-24"
 category: "Skin care"
-author: "Glow Team"
+author: "Gloww Team"
 tags: ["winter skin care", "dry skin", "skin scan"]
 image: "https://images.pexels.com/photos/6811012/pexels-photo-6811012.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ---
@@ -41,10 +41,10 @@ Keep it simple. Strong scrubs and new active products are more likely to irritat
 
 ## Track it instead of guessing
 
-It is hard to tell from the mirror whether a routine is working. The free skin scan in Glow's My Space looks at dryness, redness, texture and shine across your face, and saves each scan so you can compare week by week. If the dry or red areas shrink, your routine is working.
+It is hard to tell from the mirror whether a routine is working. The free skin scan in Gloww's My Space looks at dryness, redness, texture and shine across your face, and saves each scan so you can compare week by week. If the dry or red areas shrink, your routine is working.
 
 The scan is a beauty and skincare guide, not a medical diagnosis. For eczema, severe dryness, or anything painful or spreading, see a dermatologist.
 
 ## Getting ready for a winter wedding or event?
 
-Book a makeup artist on [Glow](https://app.gloww.dev) who knows how to prep winter skin, at your home or in their salon.
+Book a makeup artist on [Gloww](https://app.gloww.dev) who knows how to prep winter skin, at your home or in their salon.

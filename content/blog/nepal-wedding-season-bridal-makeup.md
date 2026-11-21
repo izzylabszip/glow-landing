@@ -3,7 +3,7 @@ title: "Nepal wedding season: a bridal makeup timeline"
 description: "Planning bridal makeup for a Mangsir, Magh or Falgun wedding in Kathmandu: when to book, trials, skin prep, and what to tell your artist."
 date: "2026-10-24"
 category: "Weddings"
-author: "Glow Team"
+author: "Gloww Team"
 tags: ["bridal makeup", "wedding season", "Nepal", "Kathmandu"]
 image: "https://images.pexels.com/photos/30497752/pexels-photo-30497752.jpeg?auto=compress&cs=tinysrgb&w=1200"
 ---
@@ -35,7 +35,7 @@ Winter wedding season means dry air. Steady care works better than trying someth
 - Do not start strong new actives or facials in the last two weeks
 - Drink water and sleep. It shows
 
-A weekly skin scan in Glow can show whether dryness, redness or texture is improving as the date gets closer. It is a guide for your routine, not a medical opinion, so see a dermatologist about anything that worries you.
+A weekly skin scan in Gloww can show whether dryness, redness or texture is improving as the date gets closer. It is a guide for your routine, not a medical opinion, so see a dermatologist about anything that worries you.
 
 ## The week of the wedding
 
@@ -49,4 +49,4 @@ Leave more time than you think. Bridal makeup with hair and draping usually take
 
 ## Book your bridal team
 
-On [Glow](https://app.gloww.dev) you can find bridal makeup, hair, mehendi and saree draping artists in Kathmandu, see their work and reviews, and book for your date.
+On [Gloww](https://app.gloww.dev) you can find bridal makeup, hair, mehendi and saree draping artists in Kathmandu, see their work and reviews, and book for your date.

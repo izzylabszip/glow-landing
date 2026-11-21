@@ -7,7 +7,7 @@ import { breadcrumb, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_TEL, pageMeta } from 
 
 export const metadata: Metadata = pageMeta({
   title: 'Terms of Service',
-  description: 'The terms for using Glow to book beauty artists, join as an artist and use the My Space skin scan.',
+  description: 'The terms for using Gloww to book beauty artists, join as an artist and use the My Space skin scan.',
   path: '/terms',
 })
 
@@ -25,14 +25,14 @@ export default function TermsPage() {
           <p className="mono-label" style={{ marginBottom: 28 }}>Last updated {UPDATED}</p>
 
           <p>
-            These terms apply when you use the Glow app or website (&ldquo;Glow&rdquo;). By creating an account or booking
-            through Glow you agree to them and to our <Link href="/privacy">Privacy Policy</Link>.
+            These terms apply when you use the Gloww app or website (&ldquo;Gloww&rdquo;). By creating an account or booking
+            through Gloww you agree to them and to our <Link href="/privacy">Privacy Policy</Link>.
           </p>
 
-          <h2>1. What Glow is</h2>
+          <h2>1. What Gloww is</h2>
           <p>
-            Glow is a platform that connects clients with independent beauty artists (&ldquo;Artists&rdquo;) for makeup, hair,
-            mehendi, nails, threading, waxing and similar services. Artists are not Glow employees. Each Artist is
+            Gloww is a platform that connects clients with independent beauty artists (&ldquo;Artists&rdquo;) for makeup, hair,
+            mehendi, nails, threading, waxing and similar services. Artists are not Gloww employees. Each Artist is
             responsible for the services they provide.
           </p>
 
@@ -53,7 +53,7 @@ export default function TermsPage() {
           <h2>4. Cancellations and refunds</h2>
           <ul>
             <li>You can cancel a booking in the app until the service has started.</li>
-            <li>If you cancel before the service starts, any payment made through Glow for that booking is refunded.</li>
+            <li>If you cancel before the service starts, any payment made through Gloww for that booking is refunded.</li>
             <li>If something went wrong with a service, email us within 7 days and we will review it with the Artist.</li>
           </ul>
 
@@ -62,7 +62,7 @@ export default function TermsPage() {
             <li>Give true information and documents, and keep your services, prices and availability up to date.</li>
             <li>Only offer services you are trained to provide, and follow good hygiene and safety practice.</li>
             <li>Treat clients with respect, and keep their personal details private.</li>
-            <li>Glow may approve, decline or remove an Artist profile.</li>
+            <li>Gloww may approve, decline or remove an Artist profile.</li>
           </ul>
 
           <h2>6. The My Space skin scan</h2>
@@ -74,17 +74,17 @@ export default function TermsPage() {
 
           <h2>7. Content you post</h2>
           <p>
-            You keep ownership of the photos, reviews and posts you add. You allow Glow to show them in the app and on our
+            You keep ownership of the photos, reviews and posts you add. You allow Gloww to show them in the app and on our
             website to run the service. Do not post anything that is unlawful, misleading, or that you do not have the
             right to share. We may remove content that breaks these terms.
           </p>
 
           <h2>8. Acceptable use</h2>
-          <p>Do not misuse Glow: no harassment, fraud, fake reviews, taking bookings off the platform to avoid fees, or attempts to break or scrape the service.</p>
+          <p>Do not misuse Gloww: no harassment, fraud, fake reviews, taking bookings off the platform to avoid fees, or attempts to break or scrape the service.</p>
 
           <h2>9. Liability</h2>
           <p>
-            Glow is provided as it is. To the extent the law allows, Glow is not liable for the services Artists provide,
+            Gloww is provided as it is. To the extent the law allows, Gloww is not liable for the services Artists provide,
             or for indirect losses. Nothing in these terms limits rights you have under the law that cannot be limited.
           </p>
 

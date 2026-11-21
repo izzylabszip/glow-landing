@@ -3,7 +3,7 @@ import { APP_URL, CONTACT_EMAIL, CONTACT_TEL } from '@/lib/site'
 
 const footCols = [
   {
-    title: 'Glow',
+    title: 'Gloww',
     links: [
       ['Open the app', APP_URL],
       ['Find your look', '/#looks'],
@@ -57,7 +57,7 @@ export default function Footer() {
             marginBottom: 56,
           }}
         >
-          Glow<i style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontWeight: 400, color: 'var(--rose)', letterSpacing: '-0.03em' }}>.</i>
+          Gloww<i style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontWeight: 400, color: 'var(--rose)', letterSpacing: '-0.03em' }}>.</i>
         </div>
 
         {/* grid */}
@@ -76,7 +76,7 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
               <GlowMark size={28} inverted />
               <span style={{ fontFamily: 'var(--sans)', fontWeight: 300, fontSize: 20, letterSpacing: '-0.02em', color: '#fff' }}>
-                Glow
+                Gloww
               </span>
             </div>
             <p style={{ fontSize: 14.5, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, maxWidth: '34ch' }}>
@@ -134,7 +134,7 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.3)',
           }}
         >
-          <span>&copy; {new Date().getFullYear()} Glow</span>
+          <span>&copy; {new Date().getFullYear()} Gloww</span>
           <span>Made with love for beauty</span>
         </div>
       </div>

@@ -106,7 +106,7 @@ export default function ServicePage({ params }: PageProps) {
               <ul className="pills" style={{ flexDirection: 'column', alignItems: 'flex-start', margin: '0 0 24px' }}>
                 {s.checklist.map(c => <li key={c}>✓ {c}</li>)}
               </ul>
-              <a href={APP_URL} className="btn btn-ink btn-lg" style={{ width: '100%', justifyContent: 'center' }}>Open Glow</a>
+              <a href={APP_URL} className="btn btn-ink btn-lg" style={{ width: '100%', justifyContent: 'center' }}>Open Gloww</a>
               <p className="kicker" style={{ marginTop: 36 }}>Other services</p>
               <ul className="svc-links">
                 {others.map(o => <li key={o.slug}><Link href={`/services/${o.slug}`}>{o.name}</Link></li>)}

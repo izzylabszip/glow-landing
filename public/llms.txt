@@ -1,8 +1,8 @@
-# Glow
+# Gloww
 
-> Glow is a beauty app. Clients book verified makeup artists, hairstylists and other beauty professionals for weddings, receptions, festivals, photoshoots and everyday looks, at home or in the artist's salon.
+> Gloww is a beauty app. Clients book verified makeup artists, hairstylists and other beauty professionals for weddings, receptions, festivals, photoshoots and everyday looks, at home or in the artist's salon.
 
-## What Glow does
+## What Gloww does
 - Book makeup, hair, nails, mehendi, waxing, threading and facial services from verified artists
 - Choose an artist from their real work: posts, Looks and reviews
 - Book for now or schedule a date, at home or at the artist's salon
@@ -14,7 +14,7 @@
 - Beauty professionals who want bookings, a portfolio and a verified profile
 
 ## Where
-- Glow is available to clients and artists everywhere — it is not limited to a single city
+- Gloww is available to clients and artists everywhere — it is not limited to a single city
 - Artists in a growing number of cities; the skin scan works anywhere
 
 ## Links

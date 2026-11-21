@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Glow: book makeup artists near you, plus a free AI skin scan'
+export const alt = 'Gloww: book makeup artists near you, plus a free AI skin scan'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -17,7 +17,7 @@ export default async function Image() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 36 }}>
           <div style={{ width: 22, height: 22, borderRadius: 11, background: '#C9718A' }} />
-          <div style={{ fontSize: 30, fontWeight: 600, color: '#2A1F24', letterSpacing: -1 }}>Glow</div>
+          <div style={{ fontSize: 30, fontWeight: 600, color: '#2A1F24', letterSpacing: -1 }}>Gloww</div>
         </div>
         <div style={{ fontSize: 74, fontWeight: 800, color: '#2A1F24', lineHeight: 1.02, letterSpacing: -3, maxWidth: 900 }}>
           Your artist, your look, your glow.

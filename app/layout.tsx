@@ -13,10 +13,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: TITLE,
-    template: '%s | Glow',
+    template: '%s | Gloww',
   },
   description: DESCRIPTION,
-  applicationName: 'Glow',
+  applicationName: 'Gloww',
   // Canonical, og and twitter tags are per page (lib/site.ts pageMeta): pages
   // inherit layout metadata, so site-wide values would point every page at
   // the homepage.
@@ -32,7 +32,7 @@ const siteSchema = {
     {
       '@type': 'Organization',
       '@id': `${SITE_URL}/#org`,
-      name: 'Glow',
+      name: 'Gloww',
       url: SITE_URL,
       description: 'Book verified makeup, hair, nail and mehendi artists, at home or in-studio. Plus a free AI skin scan that tracks redness, pores and spots over time.',
       logo: `${SITE_URL}/icon.png`,
@@ -43,14 +43,14 @@ const siteSchema = {
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
-      name: 'Glow',
+      name: 'Gloww',
       url: SITE_URL,
       publisher: { '@id': `${SITE_URL}/#org` },
       inLanguage: 'en',
     },
     {
       '@type': 'WebApplication',
-      name: 'Glow',
+      name: 'Gloww',
       url: APP_URL,
       applicationCategory: 'LifestyleApplication',
       operatingSystem: 'Web',

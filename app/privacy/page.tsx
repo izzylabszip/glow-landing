@@ -6,7 +6,7 @@ import { breadcrumb, CONTACT_EMAIL, CONTACT_PHONE, CONTACT_TEL, pageMeta } from 
 
 export const metadata: Metadata = pageMeta({
   title: 'Privacy Policy',
-  description: 'What Glow collects, including skin scan photos, how it is used and shared, and how to delete it.',
+  description: 'What Gloww collects, including skin scan photos, how it is used and shared, and how to delete it.',
   path: '/privacy',
 })
 
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <p className="mono-label" style={{ marginBottom: 28 }}>Last updated {UPDATED}</p>
 
           <p>
-            Glow (&ldquo;we&rdquo;) runs the Glow app and website at gloww.dev and app.gloww.dev. Glow lets clients book
+            Gloww (&ldquo;we&rdquo;) runs the Gloww app and website at gloww.dev and app.gloww.dev. Gloww lets clients book
             independent beauty artists (&ldquo;Artists&rdquo;) and use My Space, an AI skin scan. This policy explains, in
             plain language, what we collect, why, who we share it with and the choices you have.
           </p>
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             <li>To check Artists before they can take bookings</li>
             <li>To produce your skin scan results and keep your scan history</li>
             <li>To send booking updates and, if you allow it, notifications</li>
-            <li>To keep Glow safe, prevent fraud and fix errors</li>
+            <li>To keep Gloww safe, prevent fraud and fix errors</li>
           </ul>
           <p>We do not sell your personal information.</p>
 
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
           <ul>
             <li>Your scan photo is analysed to give you your results. Results describe the look of your skin; they are not a medical diagnosis.</li>
             <li>To write the plain-language summary of your scan, the photo may be sent to Google&rsquo;s Gemini AI service.</li>
-            <li>We use your scan photos to improve the scan <b>only if you turn on &ldquo;Help improve Glow&rsquo;s skin analysis&rdquo;</b> in My Space. You can turn it off at any time, and from then on your past scans are no longer used either.</li>
+            <li>We use your scan photos to improve the scan <b>only if you turn on &ldquo;Help improve Gloww&rsquo;s skin analysis&rdquo;</b> in My Space. You can turn it off at any time, and from then on your past scans are no longer used either.</li>
             <li>You can delete any scan in My Space. Deleting a scan removes its photo and results.</li>
             <li>We never use scan photos to identify you to anyone else, and we do not use them for advertising.</li>
           </ul>
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
           <h2>Who we share it with</h2>
           <ul>
             <li><b>Artists you book:</b> your name, booking details, the address for a home visit and your messages.</li>
-            <li><b>Service providers that run Glow for us:</b> hosting (Railway, Vercel), file storage, text-message sign-in codes (Twilio), payments (Stripe), push notifications (Expo), crash reports (Sentry), maps (OpenStreetMap) and AI summaries (Google Gemini). They may only use the data to provide their service to us.</li>
+            <li><b>Service providers that run Gloww for us:</b> hosting (Railway, Vercel), file storage, text-message sign-in codes (Twilio), payments (Stripe), push notifications (Expo), crash reports (Sentry), maps (OpenStreetMap) and AI summaries (Google Gemini). They may only use the data to provide their service to us.</li>
             <li><b>When the law requires it,</b> or to protect the safety of a user or the public.</li>
           </ul>
           <p>Some of these providers store data outside the country you live in.</p>
@@ -84,13 +84,13 @@ export default function PrivacyPage() {
           <h2>Your choices</h2>
           <ul>
             <li>See and update your profile in the app</li>
-            <li>Turn location, notifications and &ldquo;Help improve Glow&rsquo;s skin analysis&rdquo; on or off</li>
+            <li>Turn location, notifications and &ldquo;Help improve Gloww&rsquo;s skin analysis&rdquo; on or off</li>
             <li>Delete scans, or your whole account, in the app</li>
             <li>Email us to ask for a copy of your data or to correct it</li>
           </ul>
 
           <h2>Children</h2>
-          <p>Glow is for people aged 16 and over. We do not knowingly collect data from younger children.</p>
+          <p>Gloww is for people aged 16 and over. We do not knowingly collect data from younger children.</p>
 
           <h2>Security</h2>
           <p>

@@ -25,7 +25,7 @@ const MEASURES: [string, string][] = [
 ]
 
 const FAQS = [
-  { q: 'Is the AI skin analysis free?', a: 'Yes. The skin scan in Glow’s My Space is free.' },
+  { q: 'Is the AI skin analysis free?', a: 'Yes. The skin scan in Gloww’s My Space is free.' },
   { q: 'Is it a medical diagnosis?', a: 'No. It is a beauty and skincare guide from a photo. For any skin concern that worries you, see a dermatologist.' },
   { q: 'How accurate is it?', a: 'It is built to be consistent: the same face in similar light gets the same scores, so changes over time mean something. It only marks spots it is confident about, and it tells you to retake a photo that is too dark, blurry or turned.' },
   { q: 'What happens to my photo?', a: 'It is used to give you your results. You can delete any scan or your account in the app. Photos only help improve the scan if you turn that on yourself.' },
@@ -59,7 +59,7 @@ export default function SkinAnalysisPage() {
               <p className="kicker">My Space · Free</p>
               <h1 className="display">AI skin analysis, <em>from one selfie.</em></h1>
               <p className="lead">
-                Take a selfie in good light. Glow maps your face zone by zone, scores eight skin concerns, draws a heatmap of where it sees them, and
+                Take a selfie in good light. Gloww maps your face zone by zone, scores eight skin concerns, draws a heatmap of where it sees them, and
                 saves each scan so you can watch your skin change.
               </p>
               <div className="cta-row">
@@ -94,7 +94,7 @@ export default function SkinAnalysisPage() {
               <ol>
                 <li>Hold your phone at eye level in even light, face inside the oval.</li>
                 <li>The app checks the photo first: face size, angle, light and sharpness.</li>
-                <li>Glow’s own skin engine measures each zone (forehead, cheeks, nose, chin, under the eyes) against your own skin.</li>
+                <li>Gloww’s own skin engine measures each zone (forehead, cheeks, nose, chin, under the eyes) against your own skin.</li>
                 <li>You get scores, a short reading and a heatmap per concern. Scan again next week to compare.</li>
               </ol>
               <h2>Tips for a good scan</h2>

@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauty &amp; Bridal Portfolio Showcase</title>
+<meta name="description" content="A luxury beauty and bridal portfolio: a 3D orbital carousel and a staggered bento grid of signature looks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          alabaster: '#FAF6F2', cream: '#F3ECE4', espresso: '#261E1B',
+          taupe: '#6E5F57', rosegold: '#B8846B', champagne: '#D4A387',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
+          sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  :root { --alabaster:#FAF6F2; --cream:#F3ECE4; --espresso:#261E1B; --taupe:#6E5F57; --rose:#B8846B; --champagne:#D4A387; --cw:290px; --ch:400px; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; }
+  body { background: var(--alabaster); color: var(--espresso); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(212,163,135,.35); }
+  :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+  /* ---------- 3D carousel ---------- */
+  .stage { position: relative; perspective: 1650px; perspective-origin: 50% 42%; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; overflow: visible; }
+  .stage.is-dragging { cursor: grabbing; }
+  .ring { position: absolute; inset: 0; transform-style: preserve-3d; }
+  .halo { position: absolute; left: 50%; top: 50%; width: calc(var(--cw) * 2.05); height: calc(var(--ch) * 1.25); transform: translate(-50%, -50%); pointer-events: none;
+    background: radial-gradient(closest-side, rgba(212,163,135,.46), rgba(212,163,135,.16) 55%, transparent 78%); filter: blur(10px); animation: breathe 6s ease-in-out infinite; }
+  @keyframes breathe { 0%,100% { opacity: .75; } 50% { opacity: 1; } }
+
+  .card { position: absolute; left: 50%; top: 50%; width: var(--cw); height: var(--ch); margin-left: calc(var(--cw) / -2); margin-top: calc(var(--ch) / -2);
+    border-radius: 22px; overflow: hidden; background: var(--cream); cursor: pointer; isolation: isolate;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform, opacity;
+    box-shadow: 0 30px 60px -28px rgba(38,30,27,.55), 0 8px 18px -10px rgba(38,30,27,.25); }
+  .card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform .6s cubic-bezier(.22,1,.36,1); -webkit-user-drag: none; }
+  .card:hover .card-img, .card:focus-visible .card-img { transform: scale(1.06); }
+  .card-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(38,30,27,0) 42%, rgba(38,30,27,.38) 68%, rgba(26,18,15,.82) 100%); }
+  .card-text { position: absolute; left: 20px; right: 20px; bottom: 20px; color: #fff; }
+  .card-cat { display: block; font-size: 10px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,240,228,.9); margin-bottom: 6px; }
+  .card-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 30px; line-height: 1; letter-spacing: -.005em; }
+  .pill { position: absolute; right: 16px; bottom: 18px; padding: 8px 14px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .03em; color: #fff;
+    background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px -6px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.35); transition: background .3s ease, transform .3s ease; }
+  .card:hover .pill, .card:focus-visible .pill { background: rgba(255,255,255,.3); transform: translateY(-2px); }
+  /* depth veil: cards further round the ring are softened with cream instead of being made see-through (--d, 0..1) */
+  .card::before { content: ''; position: absolute; inset: 0; z-index: 3; border-radius: 22px; background: #FAF6F2; opacity: var(--d, 0); pointer-events: none; }
+  /* the golden rim fades in with --f (0..1, how centred the card is) */
+  .card::after { content: ''; position: absolute; inset: 0; border-radius: 22px; pointer-events: none; opacity: var(--f, 0);
+    border: 1.5px solid #D9AE8E; box-shadow: inset 0 0 0 1px rgba(255,238,210,.45), inset 0 0 36px rgba(212,163,135,.28), 0 0 44px rgba(212,163,135,.55); }
+
+  .navbtn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 30; width: 52px; height: 52px; border-radius: 999px; display: grid; place-items: center; color: var(--espresso);
+    background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    box-shadow: 0 12px 28px -12px rgba(38,30,27,.45); transition: transform .25s ease, background .25s ease; }
+  .navbtn:hover { background: rgba(255,255,255,.85); transform: translateY(-50%) scale(1.07); }
+  .navbtn:active { transform: translateY(-50%) scale(.96); }
+
+  .dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(110,95,87,.28); transition: width .35s cubic-bezier(.22,1,.36,1), background .3s ease, opacity .3s ease; }
+  .dot[aria-current="true"] { width: 26px; background: var(--rose); }
+  .dot:disabled { opacity: .25; cursor: not-allowed; }
+
+  /* ---------- bento grid ---------- */
+  .bento { column-count: 4; column-gap: 18px; }
+  @media (max-width: 1024px) { .bento { column-count: 2; } }
+  @media (max-width: 640px) { .bento { column-count: 1; } }
+  .bento .card { position: relative; left: auto; top: auto; margin: 0 0 18px; width: 100%; height: auto; display: block; break-inside: avoid; will-change: auto;
+    transition: transform .5s ease-out, box-shadow .5s ease-out; animation: rise .7s cubic-bezier(.22,1,.36,1) both; }
+  .bento .card.t1 { aspect-ratio: 4 / 5.5; } .bento .card.t2 { aspect-ratio: 4 / 4.2; } .bento .card.t3 { aspect-ratio: 4 / 5; }
+  .bento .card:hover, .bento .card:focus-visible { transform: translateY(-6px); box-shadow: 0 34px 60px -26px rgba(38,30,27,.55), 0 0 0 1px rgba(212,163,135,.55), 0 0 32px rgba(212,163,135,.3); }
+  .bento .card[hidden] { display: none; }
+  @keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- chips, toggle ---------- */
+  .chip { padding: 9px 16px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--taupe);
+    border: 1px solid rgba(110,95,87,.28); background: transparent; transition: all .3s ease; }
+  .chip:hover { border-color: var(--rose); color: var(--espresso); }
+  .chip[aria-pressed="true"] { background: var(--espresso); color: #FAF6F2; border-color: var(--espresso); }
+  .seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--cream); border: 1px solid rgba(110,95,87,.18); }
+  .seg button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--taupe); transition: all .3s ease; }
+  .seg button[aria-pressed="true"] { background: #fff; color: var(--espresso); box-shadow: 0 6px 16px -8px rgba(38,30,27,.4); }
+
+  /* ---------- modal + toast ---------- */
+  .backdrop { position: fixed; inset: 0; z-index: 80; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(38,30,27,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); opacity: 0; transition: opacity .35s ease; }
+  .backdrop.open { display: flex; } .backdrop.show { opacity: 1; }
+  .sheet { width: min(980px, 100%); max-height: calc(100vh - 40px); overflow: auto; border-radius: 26px; background: var(--alabaster); box-shadow: 0 50px 100px -30px rgba(0,0,0,.6);
+    display: grid; grid-template-columns: 1fr 1.05fr; transform: translateY(24px) scale(.96); opacity: 0; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .35s ease; }
+  .backdrop.show .sheet { transform: none; opacity: 1; }
+  @media (max-width: 760px) { .sheet { grid-template-columns: 1fr; } .sheet-img { min-height: 280px; max-height: 340px; } }
+  .sheet-img { position: relative; min-height: 480px; background: var(--cream); }
+  .sheet-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .rule { border-top: 1px solid rgba(110,95,87,.22); }
+  .toast { position: fixed; left: 50%; bottom: 28px; z-index: 120; transform: translate(-50%, 24px); opacity: 0; pointer-events: none; max-width: calc(100vw - 32px);
+    padding: 14px 20px; border-radius: 16px; background: var(--espresso); color: #FAF6F2; font-size: 13.5px; box-shadow: 0 24px 50px -18px rgba(0,0,0,.6); transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .35s ease; }
+  .toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+  .blink { animation: blink 1.8s ease-in-out infinite; } @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .halo, .blink { animation: none; } .bento .card { animation: none; } * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body class="min-h-screen">
+
+<main class="mx-auto max-w-[1320px] px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
+
+  <!-- status pill -->
+  <div class="flex justify-center">
+    <div class="inline-flex items-center gap-2.5 rounded-full border border-rosegold/25 bg-cream px-4 py-2 text-[11px] font-semibold uppercase tracking-[.18em] text-taupe">
+      <span id="statusDot" class="blink h-1.5 w-1.5 rounded-full bg-rosegold"></span>
+      <span id="statusText" aria-live="polite">Auto-Rotating • Hover to Pause</span>
+    </div>
+  </div>
+
+  <!-- editorial header -->
+  <header class="mx-auto mt-8 max-w-3xl text-center">
+    <p class="text-[11px] font-semibold uppercase tracking-[.3em] text-rosegold">Signature looks</p>
+    <h1 class="mt-4 font-serif text-[2.6rem] font-semibold leading-[1.02] tracking-tight text-espresso sm:text-6xl">
+      Crafted by the artists <em class="font-medium text-rosegold">who do it best.</em>
+    </h1>
+    <a id="seeAll" href="#gallery" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-espresso underline decoration-champagne decoration-2 underline-offset-[6px] transition hover:text-rosegold">See all services <span aria-hidden="true">→</span></a>
+  </header>
+
+  <!-- filters + view toggle -->
+  <div id="gallery" class="mt-10 flex flex-col items-center justify-between gap-5 lg:flex-row">
+    <div id="chips" class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter looks">
+      <button class="chip" data-f="all" aria-pressed="true">All Looks</button>
+      <button class="chip" data-f="wedding" aria-pressed="false">Wedding Day</button>
+      <button class="chip" data-f="party" aria-pressed="false">Party</button>
+      <button class="chip" data-f="everyday" aria-pressed="false">Everyday</button>
+      <button class="chip" data-f="hairnails" aria-pressed="false">Hair &amp; Nails</button>
+    </div>
+    <div class="seg" role="group" aria-label="View">
+      <button id="viewCarousel" aria-pressed="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="9" ry="4.5"/><rect x="8.5" y="5" width="7" height="14" rx="1.6"/></svg>
+        3D Carousel
+      </button>
+      <button id="viewBento" aria-pressed="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="10" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="6" rx="1.5"/><rect x="3.5" y="16" width="7" height="4.5" rx="1.5"/><rect x="13.5" y="12" width="7" height="8.5" rx="1.5"/></svg>
+        Bento Grid
+      </button>
+    </div>
+  </div>
+
+  <!-- 3D carousel view -->
+  <section id="carouselView" class="relative mt-6" aria-label="Signature looks carousel">
+    <div id="stage" class="stage">
+      <div class="halo" aria-hidden="true"></div>
+      <div id="ring" class="ring"></div>
+      <button id="prev" class="navbtn left-1 sm:left-4" aria-label="Previous look">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button id="next" class="navbtn right-1 sm:right-4" aria-label="Next look">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div id="dots" class="mt-4 flex items-center justify-center gap-2.5" role="group" aria-label="Choose a look"></div>
+    <p class="mt-5 text-center text-xs text-taupe">Drag, swipe or use the <kbd class="rounded border border-taupe/30 bg-cream px-1.5 py-0.5 font-sans text-[11px]">←</kbd> <kbd class="rounded border border-taupe/30 bg-cream px-1.5 py-0.5 font-sans text-[11px]">→</kbd> keys · click the centre card for details</p>
+  </section>
+
+  <!-- bento view -->
+  <section id="bentoView" class="mt-8 hidden" aria-label="Signature looks grid">
+    <div id="bento" class="bento"></div>
+  </section>
+</main>
+
+<!-- detail modal -->
+<div id="backdrop" class="backdrop" role="presentation">
+  <div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="sheet-img"><img id="mImg" alt=""></div>
+    <div class="relative flex flex-col p-7 sm:p-10">
+      <button id="mClose" class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-taupe/25 bg-white/70 text-espresso transition hover:bg-white" aria-label="Close details">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <p id="mCat" class="text-[11px] font-semibold uppercase tracking-[.28em] text-rosegold"></p>
+      <h2 id="mTitle" class="mt-3 font-serif text-5xl font-semibold leading-none text-espresso"></h2>
+      <p id="mDesc" class="mt-5 text-[15px] leading-relaxed text-taupe"></p>
+      <dl class="mt-7 grid grid-cols-1 gap-0">
+        <div class="rule flex items-baseline justify-between py-3.5"><dt class="text-[11px] font-semibold uppercase tracking-[.2em] text-taupe">Duration</dt><dd id="mDur" class="font-serif text-xl font-semibold"></dd></div>
+        <div class="rule flex items-baseline justify-between py-3.5"><dt class="text-[11px] font-semibold uppercase tracking-[.2em] text-taupe">Signature finish</dt><dd id="mFin" class="font-serif text-xl font-semibold"></dd></div>
+        <div class="rule border-b border-taupe/20 flex items-baseline justify-between py-3.5"><dt class="text-[11px] font-semibold uppercase tracking-[.2em] text-taupe">Starting at</dt><dd id="mPrice" class="font-serif text-2xl font-semibold text-rosegold"></dd></div>
+      </dl>
+      <div class="mt-auto flex flex-wrap items-center gap-3 pt-8">
+        <button id="mReserve" class="rounded-full bg-espresso px-7 py-3.5 text-sm font-semibold text-alabaster shadow-[0_14px_28px_-12px_rgba(38,30,27,.7)] transition hover:bg-rosegold">Reserve this look</button>
+        <button id="mBack" class="rounded-full border border-taupe/30 px-6 py-3.5 text-sm font-semibold text-espresso transition hover:border-rosegold">Keep browsing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ------------------------------------------------------------------ data */
+  const px = (id, w = 900) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+  const LOOKS = [
+    { title: 'Luxury Bridal',       label: 'Wedding Day', group: 'wedding',   photo: '35341784', t: 't1', dur: '3 hr 30 min', fin: 'Radiant satin, long-wear', price: 'From $420',
+      desc: 'A full bridal transformation: skin prep, sculpted soft-glam makeup, lashes and a long-wear finish designed to photograph beautifully from the first look to the last dance.' },
+    { title: 'Glass Skin',          label: 'Everyday',    group: 'everyday',  photo: '6811012',  t: 't2', dur: '1 hr', fin: 'Dewy glass', price: 'From $120',
+      desc: 'Luminous, dewy skin with barely-there colour: hydrating prep, a light-diffusing base and a glossy flush that looks like your best skin day.' },
+    { title: 'Arabic Glam',         label: 'Party',       group: 'party',     photo: '14575974', t: 't3', dur: '1 hr 45 min', fin: 'Defined matte-satin', price: 'From $190',
+      desc: 'Sculpted brows, dramatic winged liner and a bold sheen. Evening glamour with a precise, high-impact eye that holds from dinner to dawn.' },
+    { title: 'Effortless Waves',    label: 'Hair',        group: 'hairnails', photo: '28833615', t: 't1', dur: '1 hr 15 min', fin: 'Glossy, touchable hold', price: 'From $95',
+      desc: 'Soft, face-framing waves with movement and shine, set to last through the night. Add a braid or pinned detail for weddings and events.' },
+    { title: 'Traditional Bridal',  label: 'Wedding Day', group: 'wedding',   photo: '12792004', t: 't2', dur: '4 hr', fin: 'Bold, photo-ready', price: 'From $480',
+      desc: 'Rich, regal artistry for ceremonial looks: defined eyes, a deep lip and a flawless base, with draping and jewellery set by your artist.' },
+    { title: 'Korean Beauty',       label: 'Date Night',  group: 'party',     photo: '6543645',  t: 't3', dur: '1 hr 15 min', fin: 'Soft-focus dew', price: 'From $140',
+      desc: 'Gradient lips, fresh peach-pink cheeks and a translucent base. A playful, polished look made for dates, dinners and celebrations.' },
+    { title: 'Polished',            label: 'Nails',       group: 'hairnails', photo: '3997384',  t: 't1', dur: '55 min', fin: 'High-gloss lacquer', price: 'From $55',
+      desc: 'A flawless classic manicure: shaped, buffed and finished in a high-gloss colour of your choice, with cuticle care and a nourishing hand massage.' },
+    { title: 'Parisian Minimalism', label: 'Everyday',    group: 'everyday',  photo: '8062997',  t: 't2', dur: '50 min', fin: 'Natural satin', price: 'From $105',
+      desc: 'Understated chic: a skin-first base, brushed-up brows and a tinted lip. Effortless polish for every day, nothing overdone.' },
+  ];
+  const N = LOOKS.length, STEP = 360 / N;
+
+  /* ------------------------------------------------------------------ dom */
+  const $ = (s, r = document) => r.querySelector(s);
+  const stage = $('#stage'), ring = $('#ring'), dotsBox = $('#dots'), bento = $('#bento');
+  const statusText = $('#statusText'), statusDot = $('#statusDot');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function makeCard(look, i) {
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.dataset.i = i;
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', `${look.title}, ${look.label}. Open details`);
+    el.innerHTML =
+      `<img class="card-img" src="${px(look.photo)}" alt="${look.title}, ${look.label.toLowerCase()} look" draggable="false" decoding="async">` +
+      `<div class="card-shade"></div>` +
+      `<div class="card-text"><span class="card-cat">${look.label}</span><h3 class="card-title">${look.title}</h3></div>` +
+      `<span class="pill">Explore →</span>`;
+    el.querySelector('img').addEventListener('error', e => { e.target.style.display = 'none'; });
+    return el;
+  }
+
+  const cards = LOOKS.map((l, i) => { const c = makeCard(l, i); ring.appendChild(c); return c; });
+  const state = cards.map(() => ({ m: 1 }));              // m: how "in" the active filter each card is (animated 0..1)
+  const bentoCards = LOOKS.map((l, i) => { const c = makeCard(l, i); c.classList.add(l.t); c.style.animationDelay = `${i * 90}ms`; bento.appendChild(c); return c; });
+
+  const dots = LOOKS.map((l, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot'; b.setAttribute('aria-label', `Show ${l.title}`);
+    b.addEventListener('click', () => goTo(i));
+    dotsBox.appendChild(b); return b;
+  });
+
+  /* --------------------------------------------------------------- geometry */
+  let Rx = 440, Rz = 240, CW = 290, CH = 400;
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  function layout() {
+    const W = stage.clientWidth || window.innerWidth;
+    CW = clamp(W * 0.235, 196, 300);
+    CH = Math.round(CW * 1.38);
+    Rx = clamp(W * 0.37, 150, 560);
+    // depth of the ring: at least 0.85 x the card width, so a neighbour's inner edge (turned up to 22deg) can never poke through the centre card
+    Rz = clamp(Math.max(Rx * 0.54, CW * 0.85), 110, 330);
+    document.documentElement.style.setProperty('--cw', CW + 'px');
+    document.documentElement.style.setProperty('--ch', CH + 'px');
+    stage.style.height = (CH + 96) + 'px';
+  }
+
+  /* ------------------------------------------------------------------ motion */
+  const AUTO = 7;                                     // degrees per second (a full turn in ~51s)
+  let angle = 0;                                      // ring rotation; card i sits at (i * STEP + angle) degrees, 0 = front centre
+  let speed = 0;                                      // current auto-rotation speed (eased)
+  let mode = 'auto';                                  // 'auto' | 'drag' | 'inertia' | 'snap' | 'wheel'
+  let target = 0, vel = 0;
+  let hoverPause = false, modalOpen = false, view = 'carousel', filter = 'all';
+  let raf = 0, last = 0;
+
+  const wrap180 = a => ((a % 360) + 540) % 360 - 180;          // normalise to [-180, 180)
+  const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
+  const matches = i => filter === 'all' || LOOKS[i].group === filter;
+  const frontIndex = () => ((Math.round(-angle / STEP) % N) + N) % N;
+
+  function startSnap(to) { target = to; mode = 'snap'; }
+  function snapNearest() { startSnap(Math.round(angle / STEP) * STEP); }
+  function goTo(i) {
+    if (modalOpen) return;
+    const want = -i * STEP;                                         // angle that brings card i to the front
+    startSnap(angle + wrap180(want - angle));                       // shortest way round
+  }
+  function step(dir) {                                              // next / previous *matching* look
+    let i = frontIndex();
+    for (let k = 0; k < N; k++) { i = (i + dir + N) % N; if (matches(i)) { goTo(i); return; } }
+  }
+
+  function setStatus() {
+    let txt, live = true;
+    if (view === 'bento') { txt = 'Bento Grid • Hover to Preview'; live = false; }
+    else if (reduced) { txt = 'Auto-Rotate Off • Drag or Use Arrows'; live = false; }
+    else if (modalOpen) { txt = 'Paused • Details Open'; live = false; }
+    else if (mode === 'drag') { txt = 'Dragging'; live = false; }
+    else if (hoverPause) { txt = 'Paused • Move Away to Resume'; live = false; }
+    else txt = 'Auto-Rotating • Hover to Pause';
+    if (statusText.textContent !== txt) statusText.textContent = txt;
+    statusDot.classList.toggle('blink', live);
+  }
+
+  function update(dt) {
+    const wantAuto = !(hoverPause || modalOpen || reduced) && mode === 'auto';
+    speed += ((wantAuto ? AUTO : 0) - speed) * (1 - Math.exp(-dt * 2.6));        // ease in and out of the rotation
+    if (mode === 'auto') angle += speed * dt;
+    else if (mode === 'inertia') {
+      angle += vel * dt; vel *= Math.exp(-dt * 5.2);
+      if (Math.abs(vel) < 9) snapNearest();
+    } else if (mode === 'snap') {
+      const d = target - angle;
+      angle += d * (1 - Math.exp(-dt * 8.5));
+      if (Math.abs(d) < 0.04) { angle = target; mode = 'auto'; speed = 0; }
+    }
+    if (angle > 36000 || angle < -36000) angle = wrap180(angle);               // keep numbers small over very long sessions
+  }
+
+  function render(dt) {
+    for (let i = 0; i < N; i++) {
+      const el = cards[i], s = state[i];
+      s.m += ((matches(i) ? 1 : 0) - s.m) * (1 - Math.exp(-dt * 7));
+      const a = wrap180(i * STEP + angle);                                     // cycle angle, normalised
+      const abs = Math.abs(a), rad = a * Math.PI / 180;
+      const sin = Math.sin(rad), cos = Math.cos(rad);
+      const x = sin * Rx, z = (cos - 1) * Rz, y = -(1 - cos) * CH * 0.1;
+      const ry = sin * 22;                                                     // never more than 22deg: cards always face the viewer
+      const f = smooth(0, 1, 1 - abs / 30);                                     // 1 at front centre, 0 beyond 30deg
+      const sc = (1 + 0.06 * f) * (0.94 + 0.06 * s.m);
+      const veil = 0.52 * smooth(0, 112, abs);                                 // soften cards as they travel round (cream veil, no see-through)
+      const rearFade = abs <= 112 ? 1 : Math.max(0, 1 - (abs - 112) / 26);    // fully gone before they pass behind the ring
+      const op = rearFade * (0.16 + 0.84 * s.m);
+      el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, ${z.toFixed(2)}px) rotateY(${ry.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
+      el.style.opacity = op.toFixed(3);
+      el.style.visibility = op < 0.02 ? 'hidden' : 'visible';
+      el.style.pointerEvents = (op < 0.3 || s.m < 0.5) ? 'none' : 'auto';
+      el.style.zIndex = String(Math.round((cos + 1) * 100));
+      el.style.setProperty('--f', (f * s.m).toFixed(3));
+      el.style.setProperty('--d', veil.toFixed(3));
+    }
+    const fi = frontIndex();
+    for (let i = 0; i < N; i++) {
+      const on = i === fi;
+      if (dots[i].getAttribute('aria-current') !== String(on)) dots[i].setAttribute('aria-current', String(on));
+      dots[i].disabled = !matches(i);
+    }
+  }
+
+  function frame(t) {
+    const dt = Math.min(0.05, (t - last) / 1000 || 0.016); last = t;
+    update(dt); render(dt); setStatus();
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!raf && view === 'carousel') { last = performance.now(); raf = requestAnimationFrame(frame); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+  /* -------------------------------------------------------- pointer: hover / drag */
+  cards.forEach((el, i) => {
+    el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hoverPause = true; });
+    el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') hoverPause = false; });
+    el.addEventListener('focus', () => { hoverPause = true; });
+    el.addEventListener('blur', () => { hoverPause = false; });
+    el.addEventListener('click', () => {
+      if (suppressClick) return;
+      if (!matches(i)) return;
+      if (i === frontIndex() && mode !== 'drag') openModal(i); else goTo(i);
+    });
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); } });
+  });
+
+  let down = null, moved = false, suppressClick = false, samples = [];
+  const DEG_PER_PX = 0.2;
+  stage.addEventListener('pointerdown', e => {
+    if (e.button > 0 || e.target.closest('.navbtn') || modalOpen) return;
+    down = { x: e.clientX, id: e.pointerId }; moved = false; samples = [{ t: performance.now(), a: angle }];
+  });
+  stage.addEventListener('pointermove', e => {
+    if (!down || e.pointerId !== down.id) return;
+    const dx = e.clientX - down.x;
+    if (!moved && Math.abs(dx) > 6) { moved = true; mode = 'drag'; stage.classList.add('is-dragging'); try { stage.setPointerCapture(e.pointerId); } catch (_) {} }
+    if (moved) {
+      angle += (e.clientX - (down.last ?? down.x)) * DEG_PER_PX;
+      down.last = e.clientX;
+      const now = performance.now(); samples.push({ t: now, a: angle });
+      while (samples.length > 2 && now - samples[0].t > 90) samples.shift();
+    } else down.last = e.clientX;
+  });
+  const endDrag = e => {
+    if (!down || (e && e.pointerId !== down.id)) return;
+    const wasMoved = moved; down = null;
+    stage.classList.remove('is-dragging');
+    if (wasMoved) {
+      suppressClick = true; setTimeout(() => (suppressClick = false), 0);
+      const a = samples[0], b = samples[samples.length - 1];
+      const v = b.t > a.t ? (b.a - a.a) / ((b.t - a.t) / 1000) : 0;           // degrees per second at release
+      if (Math.abs(v) > 40) { vel = clamp(v, -520, 520); mode = 'inertia'; } else snapNearest();
+    }
+  };
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', endDrag);
+
+  /* trackpad / wheel: horizontal gestures rotate the ring, vertical scrolling still scrolls the page */
+  let wheelT = 0;
+  stage.addEventListener('wheel', e => {
+    if (modalOpen) return;
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY) && !e.shiftKey) return;
+    e.preventDefault();
+    mode = 'wheel';
+    angle -= (e.deltaX || e.deltaY) * 0.13;
+    clearTimeout(wheelT); wheelT = setTimeout(snapNearest, 150);
+  }, { passive: false });
+
+  /* arrows + keyboard */
+  $('#prev').addEventListener('click', () => step(-1));
+  $('#next').addEventListener('click', () => step(1));
+  document.addEventListener('keydown', e => {
+    if (modalOpen) { if (e.key === 'Escape') closeModal(); else trapTab(e); return; }
+    if (view !== 'carousel' || /input|textarea|select/i.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  });
+
+  /* ------------------------------------------------------------ filter + view */
+  const chips = [...document.querySelectorAll('.chip')];
+  function setFilter(f) {
+    filter = f;
+    chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.f === f)));
+    bentoCards.forEach((c, i) => { c.hidden = !matches(i); if (!c.hidden) { c.style.animation = 'none'; void c.offsetWidth; c.style.animation = ''; } });
+    if (!matches(frontIndex())) { for (let k = 0; k < N; k++) { const i = (frontIndex() + k) % N; if (matches(i)) { goTo(i); break; } } }
+  }
+  chips.forEach(c => c.addEventListener('click', () => setFilter(c.dataset.f)));
+  $('#seeAll').addEventListener('click', e => { e.preventDefault(); setFilter('all'); $('#gallery').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); });
+
+  const vC = $('#viewCarousel'), vB = $('#viewBento'), secC = $('#carouselView'), secB = $('#bentoView');
+  function setView(v) {
+    view = v;
+    vC.setAttribute('aria-pressed', String(v === 'carousel')); vB.setAttribute('aria-pressed', String(v === 'bento'));
+    secC.classList.toggle('hidden', v !== 'carousel'); secB.classList.toggle('hidden', v !== 'bento');
+    if (v === 'bento') { stop(); hoverPause = false; bentoCards.forEach(c => { c.style.animation = 'none'; void c.offsetWidth; c.style.animation = ''; }); }
+    else { layout(); start(); }
+    setStatus();
+  }
+  vC.addEventListener('click', () => setView('carousel'));
+  vB.addEventListener('click', () => setView('bento'));
+  bentoCards.forEach((c, i) => {
+    c.addEventListener('click', () => openModal(i));
+    c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(i); } });
+  });
+
+  /* ------------------------------------------------------------------- modal */
+  const backdrop = $('#backdrop'), sheet = $('#sheet'), toast = $('#toast');
+  let lastFocus = null, current = 0, toastT = 0;
+  function openModal(i) {
+    const L = LOOKS[i]; current = i; lastFocus = document.activeElement;
+    $('#mImg').src = px(L.photo, 1400); $('#mImg').alt = `${L.title}, ${L.label.toLowerCase()} look`;
+    $('#mCat').textContent = L.label; $('#mTitle').textContent = L.title; $('#mDesc').textContent = L.desc;
+    $('#mDur').textContent = L.dur; $('#mFin').textContent = L.fin; $('#mPrice').textContent = L.price;
+    modalOpen = true; backdrop.classList.add('open');
+    requestAnimationFrame(() => requestAnimationFrame(() => backdrop.classList.add('show')));
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => $('#mClose').focus(), 60);
+  }
+  function closeModal() {
+    modalOpen = false; backdrop.classList.remove('show');
+    setTimeout(() => { if (!modalOpen) backdrop.classList.remove('open'); }, 380);
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  function trapTab(e) {
+    if (e.key !== 'Tab') return;
+    const f = [...sheet.querySelectorAll('button')].filter(b => !b.disabled);
+    const first = f[0], lastEl = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); lastEl.focus(); }
+    else if (!e.shiftKey && document.activeElement === lastEl) { e.preventDefault(); first.focus(); }
+  }
+  $('#mClose').addEventListener('click', closeModal);
+  $('#mBack').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+  $('#mReserve').addEventListener('click', () => {
+    closeModal();
+    toast.textContent = `Reservation requested for ${LOOKS[current].title}. Your artist will confirm shortly.`;
+    toast.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('show'), 3800);
+  });
+
+  /* -------------------------------------------------------------------- boot */
+  let rt = 0;
+  addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (view === 'carousel') layout(); }, 80); });
+  layout(); render(0.016); setStatus(); start();
+})();
+</script>
+</body>
+</html>

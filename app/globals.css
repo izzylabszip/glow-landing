@@ -261,28 +261,208 @@
 .sec-title { max-width: 680px; margin: 0 auto 56px; text-align: center; }
 .sec-title .lead { margin: 0 auto; }
 
-.hero { padding: 40px 0 0; background: radial-gradient(120% 80% at 85% 10%, var(--blush) 0%, var(--paper) 55%); overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; min-height: calc(100vh - 160px); padding-bottom: 56px; }
-.arches { position: relative; height: min(620px, 72vh); }
+.hero { background: var(--paper); overflow: hidden; }
 .arch { position: absolute; overflow: hidden; border-radius: 999px 999px 28px 28px; box-shadow: 0 30px 80px -30px rgba(169,83,108,.45); }
 .arch img { object-fit: cover; }
-.arch-a { left: 0; top: 18%; width: 34%; height: 62%; }
-.arch-b { left: 30%; top: 0; width: 40%; height: 86%; z-index: 2; border: 6px solid var(--paper); }
-.arch-c { right: 0; top: 30%; width: 32%; height: 60%; }
-.float-chip { position: absolute; z-index: 3; left: 22%; bottom: 4%; background: rgba(255,255,255,.88); backdrop-filter: blur(12px);
-  padding: 12px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--rose-2); box-shadow: 0 12px 30px -12px rgba(42,31,36,.25); }
 
-.strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper); overflow: hidden; padding: 18px 0; }
-.strip-track { display: flex; width: max-content; animation: marquee 38s linear infinite; font-family: var(--serif); font-size: 26px; color: var(--ink); white-space: nowrap; }
-.strip-track i { color: var(--rose); font-style: normal; font-size: 16px; margin: 0 18px; vertical-align: middle; }
+/* Hero. Desktop and tablet (900px and up) show the designed banner picture
+   (public/hero-banner.webp, 2000x683) with Glow's own logo mark where the
+   original crown was, and real links laid over its buttons and icons.
+   Phones show the same message as live text (.banner-small) because the
+   picture's text would be too small to read there. */
+.hero-art { display: none; position: relative; line-height: 0; container-type: inline-size; --u: 1cqw; }
+.hero-art-img { width: 100%; height: auto; display: block; }
+.hero-art-logo { position: absolute; z-index: 1; left: 24.2%; top: 7.3%; width: 3.5%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 10px rgba(201,113,138,.35)); }
+.hero-art-logo svg { width: 100%; height: 100%; display: block; }
+.banner-small { display: grid; grid-template-columns: 1fr; --u: 13px; }
+.banner-copy { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding: 48px 20px 40px; overflow: hidden;
+  background:
+    radial-gradient(60% 45% at 18% 22%, rgba(233,160,177,.28) 0%, transparent 70%),
+    radial-gradient(55% 40% at 82% 78%, rgba(201,113,138,.16) 0%, transparent 70%),
+    radial-gradient(40% 30% at 70% 12%, rgba(245,225,232,.9) 0%, transparent 70%),
+    linear-gradient(160deg, var(--rose-light) 0%, var(--blush-2) 55%, var(--blush) 100%); }
+.banner-copy > :not(.sprig) { position: relative; z-index: 1; }
+.sprig { position: absolute; width: 64px; height: auto; pointer-events: none; opacity: .8; }
+.sprig-top { top: -6px; left: 6px; transform: rotate(180deg) scaleX(-1); }
+.sprig-bottom { display: none; }
 
-.looks { columns: 4 240px; column-gap: 18px; }
+.banner-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.banner-rule { width: 64px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.banner-rule:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+.banner-title { font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: .98; letter-spacing: -0.02em; color: var(--ink); max-width: 12ch; }
+.banner-title em { font-style: italic; color: var(--rose); }
+.banner-script { margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--rose-2); }
+.banner-divider { display: flex; align-items: center; gap: 12px; width: min(300px, 70%); margin: 8px 0 10px; color: var(--rose); font-size: 15px; }
+.banner-divider::before, .banner-divider::after { content: ''; flex: 1; height: 1px; background: var(--ink); opacity: .35; }
+.banner-sub { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+
+.banner-services { list-style: none; display: flex; justify-content: center; gap: 10px 8px; margin: 16px 0 20px; flex-wrap: wrap; }
+.banner-services li { width: 30%; }
+.banner-services a { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--ink); transition: color .15s ease; }
+
+.banner-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; width: 100%; }
+.banner-cta .btn { width: 100%; justify-content: center; }
+
+/* Cut-out photo (public/hero-studio.webp, 1260x667): crop off its transparent
+   left strip (136px) so it meets the panel with a clean edge. */
+.banner-photo { position: relative; aspect-ratio: 1124 / 667; }
+.banner-photo img { object-fit: cover; object-position: 100% 50%; }
+
+/* Service categories (Bridal, Makeup, Hair, Nails, Mehendi). On desktop they are live HTML laid
+   over the picture, sized in container units so they scale with it; on phones they are the
+   .banner-services list. Both share one hover / tap effect on the circle. */
+.hero-cats { list-style: none; position: absolute; z-index: 2; left: 9.19%; top: 58.6%; width: 31.1%; display: flex; line-height: 1.2; }
+.hero-cats li { flex: 1 1 0; display: flex; justify-content: center; }
+.cat { display: flex; flex-direction: column; align-items: center; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+/* Illustrated icon (a glass circle with a gold rim; its lower edge is covered by the label pill). */
+.cat-icon-art { --d: calc(var(--u) * 5.3); display: block; width: var(--d); aspect-ratio: 153 / 136; position: relative; z-index: 0;
+  filter: saturate(1) drop-shadow(0 0 0 rgba(217,122,145,0)) drop-shadow(0 0 0 rgba(233,160,177,0)); }
+.cat-icon-art img { display: block; width: 100%; height: auto; }
+.cat-label { position: relative; z-index: 1; margin-top: calc(var(--d, calc(var(--u) * 5.3)) * -.14); padding: calc(var(--u) * .3) calc(var(--u) * 1.5) calc(var(--u) * .4); min-width: calc(var(--u) * 5); text-align: center; border-radius: 999px;
+  font-family: var(--serif); font-size: max(12px, calc(var(--u) * 1.3)); line-height: 1.15; color: #5B1A33; white-space: nowrap;
+  background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,236,242,.72));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.75), 0 calc(var(--u) * .5) calc(var(--u) * 1.1) calc(var(--u) * -.5) rgba(201,113,138,.55); }
+
+.cat-icon { will-change: transform; transition: transform .3s cubic-bezier(.22, 1, .36, 1), filter .3s cubic-bezier(.22, 1, .36, 1); }
+.cat:focus-visible { outline: none; }
+.cat:focus-visible .cat-icon { outline: 2px solid var(--rose-2); outline-offset: 3px; border-radius: 50%; }
+/* Hover only where a real pointer exists; touch gets the lighter press effect below instead. */
+@media (hover: hover) {
+  .cat:hover .cat-icon, .cat:focus-visible .cat-icon {
+    transform: translateY(-5px) scale(1.1);
+    filter: saturate(1.25) drop-shadow(0 calc(var(--u) * .9) calc(var(--u) * 1.1) rgba(217,122,145,.5)) drop-shadow(0 0 calc(var(--u) * 1.1) rgba(233,160,177,.6)); }
+}
+.cat:active .cat-icon { transform: translateY(-3px) scale(1.06);
+  filter: saturate(1.2) drop-shadow(0 calc(var(--u) * .6) calc(var(--u) * .8) rgba(217,122,145,.45)) drop-shadow(0 0 calc(var(--u) * .8) rgba(233,160,177,.5)); }
+@media (prefers-reduced-motion: reduce) {
+  .cat-icon, .cat:hover .cat-icon, .cat:active .cat-icon { transition: none; transform: none; }
+}
+
+/* "Book an artist": solid berry pill. Hover deepens it to burgundy, lifts it and adds a soft berry shadow; the calendar
+   icon pops and tilts, the chevron nudges right. Label stays on one line. */
+.book-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .72em; white-space: nowrap; border-radius: 9999px;
+  background-color: #a81c4e; color: #fff; font-family: var(--sans); font-weight: 600; text-decoration: none; -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 6px 16px -8px rgba(168,28,78,.55);
+  transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+.book-btn-icon, .book-btn-chev { flex: none; transition: transform .3s cubic-bezier(.34, 1.56, .64, 1); }
+.book-btn-icon { width: 1.3em; height: 1.3em; }
+.book-btn-chev { width: 1em; height: 1em; opacity: .9; }
+@media (hover: hover) {
+  .book-btn:hover { background-color: #82123a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(130, 18, 58, .3); }
+  .book-btn:hover .book-btn-icon { transform: scale(1.12) rotate(-8deg); }
+  .book-btn:hover .book-btn-chev { transform: translateX(3px); }
+}
+.book-btn:focus-visible { background-color: #82123a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(130, 18, 58, .3); }
+.book-btn:focus-visible .book-btn-icon { transform: scale(1.12) rotate(-8deg); }
+.book-btn:focus-visible .book-btn-chev { transform: translateX(3px); }
+.book-btn:active { transform: scale(.97); }
+@media (hover: none) { .book-btn:active { background-color: #82123a; } .book-btn:active .book-btn-icon { transform: scale(1.12) rotate(-8deg); } }
+@media (prefers-reduced-motion: reduce) { .book-btn, .book-btn-icon, .book-btn-chev { transition: none; } .book-btn:hover, .book-btn:focus-visible { transform: none; } }
+.book-btn-art { position: absolute; z-index: 2; left: 10.8%; top: 81%; height: 10%; min-width: calc(var(--u) * 13.65); padding: 0 calc(var(--u) * 1.5); font-size: max(10.5px, calc(var(--u) * 1.02)); line-height: 1; }
+.book-btn-lg { width: 100%; min-height: 56px; padding: 0 26px; font-size: 16px; }
+
+/* "Try the free skin scan": outline pill with a left-to-right liquid swipe fill on hover.
+   The fill is a ::before pill that slides in from the left (its rounded right edge leads), the text and gift
+   icon sit above it (z-index 1) and turn white as it passes. */
+.skin-btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: .6em; white-space: nowrap;
+  border-radius: 9999px; border: 1px solid #a81c4e; background: rgba(255,244,248,.55); color: #1f1a1c; font-family: var(--sans); font-weight: 600; text-decoration: none;
+  -webkit-tap-highlight-color: transparent; transition: color .4s cubic-bezier(.25, 1, .5, 1), transform .15s ease; }
+.skin-btn::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: 9999px; background: #a81c4e; transform: translateX(-101%);
+  transition: transform .4s cubic-bezier(.25, 1, .5, 1); }
+.skin-btn > * { position: relative; z-index: 1; }
+.skin-btn-icon { width: 1.35em; height: 1.35em; flex: none; color: #a81c4e; transition: color .4s cubic-bezier(.25, 1, .5, 1); }
+@media (hover: hover) {
+  .skin-btn:hover::before { transform: translateX(0); }
+  .skin-btn:hover { color: #fff; }
+  .skin-btn:hover .skin-btn-icon { color: #fff; }
+}
+.skin-btn:focus-visible::before { transform: translateX(0); }
+.skin-btn:focus-visible, .skin-btn:focus-visible .skin-btn-icon { color: #fff; }
+.skin-btn:active { transform: scale(.97); }
+@media (hover: none) { .skin-btn:active::before { transform: translateX(0); } .skin-btn:active, .skin-btn:active .skin-btn-icon { color: #fff; } }
+@media (prefers-reduced-motion: reduce) { .skin-btn, .skin-btn::before, .skin-btn-icon { transition: none; } }
+/* sizes: on the banner it scales with the picture (it takes the place of the baked-in button), full width on phones */
+.skin-btn-art { position: absolute; z-index: 2; left: 25.5%; top: 81%; height: 10%; padding: 0 calc(var(--u) * 1.7); font-size: max(10.5px, calc(var(--u) * 1.02)); line-height: 1; }
+.skin-btn-lg { width: 100%; min-height: 56px; padding: 0 26px; font-size: 15px; }
+
+@media (min-width: 900px) {
+  .hero-art { display: block; }
+  .banner-small { display: none; }
+}
+
+/* Services bar, full width. Built from public/strip: a tiling middle (rose-mid.png) and a cap at each end with a
+   rose, gold leaves and the rounded pill end (rose-cap-left.webp / rose-cap-right.webp, 116x208 each). The pictures sit
+   on white and the bar is blended with "multiply", so the white becomes the page colour and only the soft
+   shadow stays. The names scroll between the caps. --h is the bar's height; the caps scale with it. */
+.strip { --h: 132px; --cap: calc(var(--h) * .5577); position: relative; height: var(--h); margin-top: calc(var(--h) * -.1); overflow: hidden; mix-blend-mode: multiply;
+  background: url(/strip/rose-mid.png) repeat-x 0 0 / 4px 100%; }
+.strip::before, .strip::after { content: ''; position: absolute; top: 0; bottom: 0; width: var(--cap); z-index: 2; pointer-events: none; background-repeat: no-repeat; background-size: 100% 100%; }
+.strip::before { left: 0; background-image: url(/strip/rose-cap-left.webp); }
+.strip::after { right: 0; background-image: url(/strip/rose-cap-right.webp); }
+.strip-window { position: absolute; top: 0; bottom: 0; left: calc(var(--cap) - 2px); right: calc(var(--cap) - 2px); overflow: hidden; display: flex; align-items: center;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%); }
+.strip-track { display: flex; width: max-content; animation: marquee 38s linear infinite; font-family: var(--serif); font-size: calc(var(--h) * .155); color: #3A1A2A; white-space: nowrap; }
+.strip-track i { color: #EC2A80; font-style: normal; font-size: calc(var(--h) * .12); margin: 0 calc(var(--h) * .19); vertical-align: middle; }
+@media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } }
+
+.looks { column-count: 4; column-gap: 18px; }            /* 4 columns on desktop, 2 on tablet, 1 on phones (see below) */
 .look { break-inside: avoid; margin-bottom: 18px; }
-.look a { position: relative; display: block; aspect-ratio: 4/4.4; border-radius: 22px; overflow: hidden; }
-.look-tall a { aspect-ratio: 4/5.6; }
-.look img { object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
-.look a:hover img { transform: scale(1.05); }
+.look a { position: relative; display: block; aspect-ratio: 4/4.4; border-radius: 20px; overflow: hidden; }
+.look-tall a { aspect-ratio: 4/5.6; }                      /* the taller cards give the staggered, editorial rhythm */
+.look img { object-fit: cover; transition: transform .5s ease-out; }
+.look a:hover img { transform: scale(1.06); transition: transform .5s ease-out; }
+@media (max-width: 1024px) { .looks { column-count: 2; } }
+@media (max-width: 640px) { .looks { column-count: 1; } }
 .look a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(42,31,36,.62)); }
+
+/* Looks gallery tour: a gold light-trail sweeps the wall, then a spotlight visits one look at a time
+   (see components/sections/LooksTour.tsx). */
+.looks-stage { position: relative; }
+.looks-trail { position: absolute; inset: -4% -2%; width: 104%; height: 108%; z-index: 4; pointer-events: none; overflow: visible; fill: none; opacity: 0; }
+.looks-trail path { stroke: url(#trailGold); stroke-width: 3; stroke-linecap: round; stroke-dasharray: .45 1; stroke-dashoffset: .45; vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 6px rgba(243,220,138,.9)) drop-shadow(0 0 14px rgba(212,175,55,.55)); }
+.looks-trail .second { stroke-width: 1.5; opacity: .8; }
+.trail-on .looks-trail { animation: trailFade 2.6s ease-out both; }
+.trail-on .looks-trail path { animation: trailRun 2.4s cubic-bezier(.45, .05, .2, 1) both; }
+.trail-on .looks-trail .second { animation-delay: .18s; }
+@keyframes trailRun { from { stroke-dashoffset: .45; } to { stroke-dashoffset: -1; } }
+@keyframes trailFade { 0% { opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+
+.look { position: relative; }
+.look a { transition: transform .5s ease-out, box-shadow .5s ease-out, filter .6s ease; }
+.look { translate: 0 calc(var(--par, 0) * 1px); }   /* slow parallax drift, set from LooksTour.tsx */
+.look a::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,236,170,.55) 50%, transparent 70%); transform: translateX(-120%); }
+.tour .look:not(.look-active) a { filter: brightness(.86) saturate(.92); }
+.look-active { z-index: 3; }
+.look-active a { transform: translateY(-6px); filter: none;
+  box-shadow: 0 0 0 1.5px rgba(255,232,160,.85), 0 24px 48px -18px rgba(42,31,36,.45), 0 0 34px rgba(243,220,138,.42); }
+.look-active a::before { animation: lookSweep 1.3s ease-out .1s both; }
+.look-active img { transform: scale(1.1); transition: transform 3.6s cubic-bezier(.2, .6, .2, 1); }   /* slow drift while the tour is on a card; real hover uses the faster 1.06 zoom above */
+@keyframes lookSweep { 0% { opacity: 0; transform: translateX(-120%); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateX(120%); } }
+
+.look-sparks { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0; transition: opacity .6s ease; }
+.look-active .look-sparks { opacity: 1; }
+.look-sparks i { position: absolute; width: 5px; height: 5px; margin: -2.5px; border-radius: 50%; background: radial-gradient(circle, #FFF6D0 0%, #F3DC8A 45%, rgba(212,175,55,0) 72%);
+  box-shadow: 0 0 8px 2px rgba(243,220,138,.7); opacity: 0; }
+.look-active .look-sparks i { animation: spark 2.2s ease-in-out infinite; }
+@keyframes spark { 0%, 100% { opacity: 0; transform: translateY(6px) scale(.4); } 45% { opacity: 1; transform: translateY(-4px) scale(1); } 80% { opacity: .2; transform: translateY(-12px) scale(.6); } }
+.look-label { transition: transform .4s ease-out; }
+.look-active .look-label, .look a:hover .look-label { transform: translateY(-4px); text-shadow: 0 2px 14px rgba(0,0,0,.45); }
+.look-more { position: absolute; z-index: 1; right: 14px; bottom: 14px; padding: 6px 12px; border-radius: 999px; color: #fff; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .02em;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 0 14px rgba(255,232,160,.35); opacity: 0; transform: translateY(8px); transition: opacity .4s ease-out, transform .4s ease-out; pointer-events: none; }
+.look-active .look-more, .look a:hover .look-more { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .look a, .look img, .look-label, .look-more { transition: none; }
+  .look-active a, .look a:hover img, .look-active img { transform: none; }
+  .look { translate: none; }
+  .looks-trail, .look-sparks, .look a::before { display: none; }
+}
 .look-label { position: absolute; z-index: 1; left: 18px; bottom: 16px; color: #fff; font-family: var(--serif); font-size: 26px; line-height: 1.05; display: flex; flex-direction: column; }
 .look-label small { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; opacity: .85; margin-bottom: 6px; }
 
@@ -344,16 +524,14 @@
 .post-card h2 { margin: 10px 0 8px !important; font-family: var(--serif); font-weight: 400; font-size: 28px !important; color: var(--ink); transition: color .15s ease; }
 
 @media (max-width: 980px) {
-  .hero-grid, .scan-grid, .artists-grid { grid-template-columns: 1fr; gap: 48px; min-height: 0; }
-  .arches { height: 460px; }
+  .scan-grid, .artists-grid { grid-template-columns: 1fr; gap: 48px; min-height: 0; }
   .scan-grid .phone-wrap { order: 2; }
   .artists-img { max-width: 460px; }
 }
 @media (max-width: 640px) {
-  .arches { height: 380px; }
-  .strip-track { font-size: 21px; }
-  .looks { columns: 2 140px; column-gap: 12px; }
-  .look { margin-bottom: 12px; }
+  .strip { --h: 96px; }
+  .looks { column-gap: 12px; }
+  .look { margin-bottom: 14px; }
   .look-label { font-size: 19px; left: 12px; bottom: 12px; }
   .phone { width: 260px; }
   .final { padding: 72px 22px; border-radius: 30px; }

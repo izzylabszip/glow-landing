@@ -1,0 +1,90 @@
+/* Looks showcase: 3D orbital carousel + bento grid (components/sections/LooksShowcase.tsx).
+   Everything is prefixed sc- and scoped under .showcase so it cannot clash with the rest of the site. */
+.showcase { --sc-alabaster: #FAF6F2; --sc-cream: #F3ECE4; --sc-espresso: #261E1B; --sc-taupe: #6E5F57; --sc-rose: #B8846B; --sc-champagne: #D4A387; --cw: 290px; --ch: 400px;
+  color: var(--sc-espresso); font-family: var(--sans); }
+.showcase :focus-visible { outline: 2px solid var(--sc-rose); outline-offset: 3px; }
+:where(.showcase button) { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }   /* :where keeps this reset from outranking the component styles below */
+
+/* ---------- view toggle ---------- */
+.sc-controls { margin-top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+@media (min-width: 1024px) { .sc-controls { flex-direction: row; } }
+.sc-seg { display: inline-flex; padding: 4px; border-radius: 999px; background: var(--sc-cream); border: 1px solid rgba(110,95,87,.18); }
+.sc-seg button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--sc-taupe); transition: all .3s ease; }
+.sc-seg button[aria-pressed="true"] { background: #fff; color: var(--sc-espresso); box-shadow: 0 6px 16px -8px rgba(38,30,27,.4); }
+
+/* ---------- 3D carousel ---------- */
+.sc-carousel { position: relative; margin-top: 24px; }
+.sc-stage { position: relative; perspective: 1650px; perspective-origin: 50% 42%; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
+.sc-stage.is-dragging { cursor: grabbing; }
+.sc-stage:not([data-ready]) .sc-card { visibility: hidden; }
+.sc-ring { position: absolute; inset: 0; transform-style: preserve-3d; }
+.sc-halo { position: absolute; left: 50%; top: 50%; width: calc(var(--cw) * 2.05); height: calc(var(--ch) * 1.25); transform: translate(-50%, -50%); pointer-events: none;
+  background: radial-gradient(closest-side, rgba(212,163,135,.46), rgba(212,163,135,.16) 55%, transparent 78%); filter: blur(10px); animation: sc-breathe 6s ease-in-out infinite; }
+@keyframes sc-breathe { 0%,100% { opacity: .75; } 50% { opacity: 1; } }
+
+.sc-card { position: absolute; left: 50%; top: 50%; width: var(--cw); height: var(--ch); margin-left: calc(var(--cw) / -2); margin-top: calc(var(--ch) / -2);
+  border-radius: 22px; overflow: hidden; background: var(--sc-cream); cursor: pointer; isolation: isolate; text-align: left;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden; will-change: transform, opacity;
+  box-shadow: 0 30px 60px -28px rgba(38,30,27,.55), 0 8px 18px -10px rgba(38,30,27,.25); }
+.sc-card img { object-fit: cover; transform: scale(1); transition: transform .6s cubic-bezier(.22,1,.36,1); -webkit-user-drag: none; }
+.sc-card:hover img, .sc-card:focus-visible img { transform: scale(1.06); }
+.sc-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(38,30,27,0) 42%, rgba(38,30,27,.38) 68%, rgba(26,18,15,.82) 100%); }
+.sc-text { position: absolute; left: 20px; right: 20px; bottom: 20px; color: #fff; }
+.sc-cat { display: block; font-size: 10px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,240,228,.9); margin-bottom: 6px; }
+.sc-title { font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; letter-spacing: -.005em; }
+/* cream veil softens cards further round the ring (--d) instead of making them see-through */
+.sc-card::before { content: ''; position: absolute; inset: 0; z-index: 3; border-radius: 22px; background: #FAF6F2; opacity: var(--d, 0); pointer-events: none; }
+/* the golden rim fades in with --f (0..1, how centred the card is) */
+.sc-card::after { content: ''; position: absolute; inset: 0; border-radius: 22px; pointer-events: none; opacity: var(--f, 0);
+  border: 1.5px solid #D9AE8E; box-shadow: inset 0 0 0 1px rgba(255,238,210,.45), inset 0 0 36px rgba(212,163,135,.28), 0 0 44px rgba(212,163,135,.55); }
+
+.sc-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 30; width: 52px; height: 52px; border-radius: 999px; display: grid; place-items: center; color: var(--sc-espresso);
+  background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.85); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 12px 28px -12px rgba(38,30,27,.45); transition: transform .25s ease, background .25s ease; }
+.sc-nav:hover { background: rgba(255,255,255,.85); transform: translateY(-50%) scale(1.07); }
+.sc-nav:active { transform: translateY(-50%) scale(.96); }
+.sc-nav.prev { left: 4px; } .sc-nav.next { right: 4px; }
+@media (min-width: 640px) { .sc-nav.prev { left: 16px; } .sc-nav.next { right: 16px; } }
+
+.sc-dots { margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.sc-dot { width: 8px; height: 8px; padding: 0; border-radius: 999px; background: rgba(110,95,87,.28); transition: width .35s cubic-bezier(.22,1,.36,1), background .3s ease, opacity .3s ease; }
+.sc-dot[aria-current="true"] { width: 26px; background: var(--sc-rose); }
+.sc-dot:disabled { opacity: .25; cursor: not-allowed; }
+
+/* ---------- bento grid ---------- */
+.sc-bento { margin-top: 32px; column-count: 4; column-gap: 18px; }
+@media (max-width: 1024px) { .sc-bento { column-count: 2; } }
+@media (max-width: 640px) { .sc-bento { column-count: 1; } }
+.sc-bento .sc-card { position: relative; left: auto; top: auto; margin: 0 0 18px; width: 100%; height: auto; display: block; break-inside: avoid; will-change: auto;
+  transition: transform .5s ease-out, box-shadow .5s ease-out; animation: sc-rise .7s cubic-bezier(.22,1,.36,1) both; }
+.sc-bento .sc-card.t1 { aspect-ratio: 4 / 5.5; } .sc-bento .sc-card.t2 { aspect-ratio: 4 / 4.2; } .sc-bento .sc-card.t3 { aspect-ratio: 4 / 5; }
+.sc-bento .sc-card:hover, .sc-bento .sc-card:focus-visible { transform: translateY(-6px); box-shadow: 0 34px 60px -26px rgba(38,30,27,.55), 0 0 0 1px rgba(212,163,135,.55), 0 0 32px rgba(212,163,135,.3); }
+@keyframes sc-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+/* ---------- lightbox ---------- */
+.sc-card { cursor: zoom-in; }
+.sc-stage { cursor: grab; } .sc-stage .sc-card { cursor: zoom-in; }
+.sc-backdrop { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(26,18,15,.72);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); cursor: zoom-out; animation: sc-fade .3s ease both; }
+.sc-backdrop.closing { animation: sc-fadeout .26s ease both; }
+.sc-lightbox { position: relative; margin: 0; display: flex; flex-direction: column; align-items: center; cursor: default; animation: sc-zoom .42s cubic-bezier(.22,1,.36,1) both; }
+.sc-backdrop.closing .sc-lightbox { animation: sc-zoomout .26s ease both; }
+.sc-lb-img { height: auto; width: min(92vw, calc((100vh - 235px) * var(--r, .8)), 1100px); aspect-ratio: var(--r, .8); object-fit: contain; border-radius: 20px; background: var(--sc-cream);
+  box-shadow: 0 50px 100px -30px rgba(0,0,0,.65); cursor: zoom-out; }
+.sc-lb-cap { margin-top: 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; color: #fff; }
+.sc-lb-cap .sc-mcat { color: rgba(255,232,214,.85); }
+.sc-lb-book { margin-top: 18px; min-height: 52px; padding: 0 30px; font-size: 15px; }
+.sc-lb-title { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); line-height: 1; }
+.sc-x { position: absolute; right: 12px; top: 12px; z-index: 2; width: 42px; height: 42px; border-radius: 999px; display: grid; place-items: center; color: var(--sc-espresso);
+  border: 1px solid rgba(255,255,255,.7); background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); transition: background .25s ease, transform .25s ease; }
+.sc-x:hover { background: #fff; transform: scale(1.06); }
+.sc-mcat { font-size: 11px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--sc-rose); }
+@keyframes sc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sc-fadeout { from { opacity: 1; } to { opacity: 0; } }
+@keyframes sc-zoom { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: none; } }
+@keyframes sc-zoomout { from { opacity: 1; transform: none; } to { opacity: 0; transform: scale(.94); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-halo, .sc-bento .sc-card, .sc-backdrop, .sc-lightbox { animation: none; }
+  .sc-card img, .sc-bento .sc-card { transition: none; }
+}

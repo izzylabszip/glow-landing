@@ -19,6 +19,9 @@ const nextConfig = {
   },
 
   async headers() {
+    // One-year "immutable" caching is for the production build only. In `next dev` the chunk names are not
+    // content-hashed, so the browser would keep serving stale scripts after every change.
+    if (process.env.NODE_ENV !== 'production') return []
     return [
       {
         source: '/_next/static/(.*)',

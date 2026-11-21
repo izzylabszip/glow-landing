@@ -1,6 +1,6 @@
 ---
-title: "Skin tone foundation: how to match your shade"
-description: "Match foundation to your skin tone: find your undertone, test three shades on your jawline in daylight, and allow for oxidation — a simple guide for South Asian skin."
+title: "Foundation for your skin tone: how to match your shade"
+description: "Find your undertone, test three shades on your jawline in daylight, and allow for oxidation: a simple way to choose a foundation that matches South Asian skin."
 date: "2026-10-27"
 category: "Makeup"
 author: "Gloww Team"

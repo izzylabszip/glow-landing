@@ -1,0 +1,28 @@
+# Glow
+
+> Glow is a beauty app. Clients book verified makeup artists, hairstylists and other beauty professionals for weddings, receptions, festivals, photoshoots and everyday looks, at home or in the artist's salon.
+
+## What Glow does
+- Book makeup, hair, nails, mehendi, waxing, threading and facial services from verified artists
+- Choose an artist from their real work: posts, Looks and reviews
+- Book for now or schedule a date, at home or at the artist's salon
+- Chat with the artist and track their arrival on the day
+- My Space: an AI skin scan that reads skin tone and type and suggests products, saved so you can see changes over time
+
+## Who it is for
+- Clients looking for a makeup artist or hairstylist for a wedding, reception, festival or photoshoot
+- Beauty professionals who want bookings, a portfolio and a verified profile
+
+## Where
+- Glow is available to clients and artists everywhere — it is not limited to a single city
+- Artists in a growing number of cities; the skin scan works anywhere
+
+## Links
+- Website: https://gloww.dev
+- Web app: https://app.gloww.dev
+- Guides: https://gloww.dev/blog
+- Contact: contact@gloww.dev
+
+## Trust
+- Artists are verified with identity and professional documents before they can take bookings
+- Scan photos are only analysed with the user's consent and can be deleted from the app

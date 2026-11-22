@@ -88,3 +88,6 @@
   .sc-halo, .sc-bento .sc-card, .sc-backdrop, .sc-lightbox { animation: none; }
   .sc-card img, .sc-bento .sc-card { transition: none; }
 }
+
+/* keep the 3D cards inside the screen: stops the page sliding sideways on phones */
+.sc-carousel { overflow-x: clip; }

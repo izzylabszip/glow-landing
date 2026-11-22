@@ -1,0 +1,53 @@
+name: Promote to production
+
+# Manual only — never runs on push. The owner approves each promotion by
+# starting this workflow himself (or by asking Muse to start it).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: promote-to-production
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the landing repo (dev source)
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Check out the Glow monorepo (production target)
+        uses: actions/checkout@v4
+        with:
+          repository: izzylabszip/Glow
+          token: ${{ secrets.PROMOTE_TOKEN }}
+          ref: main
+          fetch-depth: 0
+          path: prod
+
+      - name: Get landing repo short SHA
+        id: site_sha
+        run: echo "short=$(git -C site rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Sync landing repo into prod/landing
+        run: |
+          mkdir -p prod/landing
+          rsync -a --delete --exclude='.git' --exclude='.github' site/ prod/landing/
+
+      - name: Commit and push to production main
+        working-directory: prod
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add landing
+          if git diff --cached --quiet; then
+            echo "No changes to promote — production already matches dev."
+            exit 0
+          fi
+          git commit -m "Promote landing from izzylabszip/glow-landing @ ${{ steps.site_sha.outputs.short }}"
+          git push origin main

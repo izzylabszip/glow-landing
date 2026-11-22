@@ -12,6 +12,8 @@ export interface ServicePage {
   intro: string
   photo: string // Pexels id, same photos as the app's Looks
   photoAlt: string
+  photoSrc?: string // a local photo in /public, used instead of the Pexels one
+  photoWide?: boolean // a landscape photo: shown in a wider frame instead of the tall arch
   sections: { heading: string; body: string[] }[]
   checklist: string[]
   faqs: { q: string; a: string }[]
@@ -31,6 +33,7 @@ export const SERVICES: ServicePage[] = [
       'A bridal look has to last 12 hours, photograph well in daylight and under flash, and still feel like you. Gloww helps you find an artist whose real bridal work matches what you want, book your date early, and plan the trial and the timing.',
     photo: '35341784',
     photoAlt: 'Bride with soft glam bridal makeup',
+    photoSrc: '/services/bridal-makeup-girl.webp',
     sections: [
       {
         heading: 'How to choose a bridal makeup artist',
@@ -74,7 +77,8 @@ export const SERVICES: ServicePage[] = [
     intro:
       'Receptions, birthdays, festivals, photoshoots: party makeup needs to look good in low light and in flash photos, and last through the evening. Pick a look, see which artists near you do it, and book a time that fits.',
     photo: '14575974',
-    photoAlt: 'Woman with full glam party makeup',
+    photoAlt: 'Woman with a soft glam party look, glowing skin and a loose updo',
+    photoSrc: '/services/party-makeup.webp',
     sections: [
       {
         heading: 'Pick the look first',
@@ -108,7 +112,8 @@ export const SERVICES: ServicePage[] = [
     intro:
       'Updos, soft waves, braids and blow-dries for weddings, parties and shoots. See each stylist’s real work and book a time, at home or in their salon.',
     photo: '28833615',
-    photoAlt: 'Long hair styled in soft waves with a braid',
+    photoAlt: 'A braided updo with loose waves and gold star-and-moon hair pins',
+    photoSrc: '/services/hair-styling.webp',
     sections: [
       {
         heading: 'Getting the style you want',
@@ -137,6 +142,8 @@ export const SERVICES: ServicePage[] = [
       'Bridal full-hand designs, Arabic patterns or a simple festival design: see each artist’s real work, choose a style and book your time.',
     photo: '14825258',
     photoAlt: 'Hands with detailed bridal mehendi design',
+    photoSrc: '/services/mehendi-wide.webp',
+    photoWide: true,
     sections: [
       {
         heading: 'Plan the timing',
@@ -164,7 +171,8 @@ export const SERVICES: ServicePage[] = [
     intro:
       'Classic manicures, gel and nail art for everyday or events. Browse real work and book an artist near you.',
     photo: '3997384',
-    photoAlt: 'Polished red manicure',
+    photoAlt: 'Almond nails in soft pink with gold detail, crystals and pearl bows',
+    photoSrc: '/services/nails.webp',
     sections: [
       {
         heading: 'Choosing a finish',

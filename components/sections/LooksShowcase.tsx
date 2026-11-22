@@ -24,6 +24,7 @@ const LOOKS: Look[] = [
   { title: 'Wedding Day Glam',   label: 'Wedding makeup',     groups: ['wedding'],                 photo: 'wedding-makeup',     pos: '50% 28%', t: 't1' },
   { title: 'Glass Skin Glow',    label: 'Glass makeup',       groups: ['everyday'],                photo: 'glass-makeup',       pos: '50% 34%', t: 't2' },
   { title: 'Romantic Updos',     label: 'Hair',               groups: ['hairnails'],               photo: 'hair-updo',          pos: '50% 30%', t: 't3' },
+  { title: 'Pearl Braid',        label: 'Hair',               groups: ['wedding', 'hairnails'],    photo: 'braided-hair',       pos: '42% 40%', t: 't2' },
   { title: 'Royal Bridal Red',   label: 'Traditional bridal', groups: ['wedding', 'traditional'],  photo: 'traditional-bridal', pos: '50% 30%', t: 't1' },
   { title: 'Pearl French Nails', label: 'Nails',              groups: ['hairnails'],               photo: 'nails',              pos: '50% 50%', t: 't2' },
   { title: 'Lashes & Brows',     label: 'Brows & lashes',     groups: ['everyday'],                photo: 'brows-lashes',       pos: '40% 40%', t: 't3' },
@@ -40,7 +41,7 @@ function slotsFor(filter: 'all' | Group): number[] {
 }
 
 
-const AUTO = 7                          // degrees per second
+const AUTO = 7                          // degrees per second; positive = cards drift right, the way the ">" arrow points
 const DEG_PER_PX = 0.2
 const DRAG_START_MOUSE = 8, DRAG_START_TOUCH = 14   // px a pointer must travel before it counts as a drag instead of a tap
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v))
@@ -234,8 +235,8 @@ export default function LooksShowcase() {
     /* keyboard: only while the carousel is on screen, so the arrows never hijack the rest of the page */
     const onKey = (e: KeyboardEvent) => {
       if (modalRef.current !== null || !running() || /input|textarea|select/i.test((e.target as HTMLElement)?.tagName || '')) return
-      if (e.key === 'ArrowRight') { e.preventDefault(); step(1) }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1) }
+      if (e.key === 'ArrowRight') { e.preventDefault(); step(-1) }   // cards move right, like the ">" button
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); step(1) }
     }
 
     stage.addEventListener('pointerdown', onDown)
@@ -333,10 +334,10 @@ export default function LooksShowcase() {
               )
             })}
           </div>
-          <button className="sc-nav prev" aria-label="Previous look" onClick={() => api.current?.step(-1)}>
+          <button className="sc-nav prev" aria-label="Previous look" onClick={() => api.current?.step(1)}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
           </button>
-          <button className="sc-nav next" aria-label="Next look" onClick={() => api.current?.step(1)}>
+          <button className="sc-nav next" aria-label="Next look" onClick={() => api.current?.step(-1)}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>

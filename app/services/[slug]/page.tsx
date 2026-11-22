@@ -76,8 +76,8 @@ export default function ServicePage({ params }: PageProps) {
                 <Link href="/#skin-scan" className="btn btn-ghost btn-lg">Free skin scan</Link>
               </div>
             </div>
-            <div className="arch svc-photo">
-              <Image src={pexels(s.photo, 900)} alt={s.photoAlt} fill priority sizes="(max-width: 980px) 90vw, 460px" />
+            <div className={`arch svc-photo${s.photoWide ? ' svc-photo-wide' : ''}`}>
+              <Image src={s.photoSrc ?? pexels(s.photo, 900)} alt={s.photoAlt} fill priority sizes="(max-width: 980px) 90vw, 460px" quality={90} />
             </div>
           </div>
         </section>

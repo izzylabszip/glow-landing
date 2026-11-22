@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import JsonLd from '@/components/JsonLd'
-import { APP_URL, SITE_URL, pageMeta, pexels, breadcrumb } from '@/lib/site'
+import { APP_URL, SITE_URL, pageMeta, breadcrumb } from '@/lib/site'
 
 export const metadata: Metadata = pageMeta({
   title: 'Free AI Skin Analysis: Scan Your Skin From a Selfie',
@@ -67,8 +67,8 @@ export default function SkinAnalysisPage() {
                 <Link href="/services" className="btn btn-ghost btn-lg">Book an artist</Link>
               </div>
             </div>
-            <div className="arch svc-photo">
-              <Image src={pexels('6811012', 900)} alt="Woman checking her skin after a facial" fill priority sizes="(max-width: 980px) 90vw, 460px" />
+            <div className="arch svc-photo svc-photo-phone">
+              <Image src="/services/skin-analysis.webp" alt="A phone showing a skin scan: marked blemishes, dark spots and pores, an 87 out of 100 score and personalised tips" fill priority sizes="(max-width: 980px) 90vw, 440px" quality={90} />
             </div>
           </div>
         </section>

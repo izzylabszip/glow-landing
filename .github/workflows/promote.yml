@@ -2,6 +2,11 @@ name: Promote to production
 
 # Manual only — never runs on push. The owner approves each promotion by
 # starting this workflow himself (or by asking Muse to start it).
+# Two steps: (1) copy the landing repo into the Glow monorepo's landing/
+# and push to main; (2) deploy the landing site to the gloww.dev Vercel
+# project. Step 2 exists because the monorepo root vercel.json sets
+# ignoreCommand "exit 0", so Vercel never builds the landing site from
+# git pushes — it only moves via a direct deploy like this one.
 on:
   workflow_dispatch:
 
@@ -51,3 +56,12 @@ jobs:
           fi
           git commit -m "Promote landing from izzylabszip/glow-landing @ ${{ steps.site_sha.outputs.short }}"
           git push origin main
+
+      - name: Deploy the landing site to production (Vercel)
+        working-directory: site
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          mkdir -p .vercel
+          printf '{"projectId":"prj_GyTycig6VbOYSYvWEKjybozptHlQ","orgId":"team_z2gHlzP3ZBk9P7UNruBMAh0U"}' > .vercel/project.json
+          npx --yes vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"

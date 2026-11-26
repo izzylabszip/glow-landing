@@ -2,6 +2,7 @@
 title: "Foundation for your skin tone: how to match your shade"
 description: "Find your undertone, test three shades on your jawline in daylight, and allow for oxidation: a simple way to choose a foundation that matches South Asian skin."
 date: "2026-10-27"
+updated: "2026-11-26"
 category: "Makeup"
 author: "Gloww Team"
 tags: ["foundation shade", "choose foundation", "undertone", "South Asian skin", "makeup tips"]
@@ -68,3 +69,17 @@ A camera flash makes some formulas look lighter or ashy. Before a wedding or a l
 
 - Choosing a lighter shade to look fairer: it reads grey in photos and stops at the jaw
 - Buying from a swatch on the back of the hand: hands are a different colour from the face
+
+## Frequently asked questions
+
+### How do I know my skin tone for foundation?
+
+Check your undertone, not the colour on the surface: look at the veins on your inner wrist in daylight — greenish means warm, bluish or purple means cool — see whether gold or silver jewellery flatters you more, and hold plain white and cream fabric near your face. Most South Asian skin is warm, golden or olive, so shades labelled "warm", "golden", "W" or "Y" usually suit it better than pink-based shades.
+
+### What foundation shade am I?
+
+Test three shades — the one you think is right, one lighter and one deeper — as stripes along your jawline and down onto your neck. Wait 10-15 minutes for oxidation, then check in daylight, not shop lighting. The right shade disappears into both your face and your neck; if your face is lighter than your neck, match the neck.
+
+### How do I choose a foundation colour?
+
+Match the undertone letter first, then the depth: W, Y, warm or golden is warm; C, P, R, rose or pink is cool; N or neutral sits between. Porcelain, ivory and shell suit fair to light skin; light beige, natural and sand suit light to light-medium; golden, honey, wheat and caramel suit medium skin, including most "wheatish" skin; tan, amber, mocha and espresso suit medium-deep to deep skin.
